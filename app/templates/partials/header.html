@@ -1,0 +1,31 @@
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="{{ url_for('site.home') }}">
+      <span class="brand-mark">ML</span>
+      <span>
+        <strong>{{ site_name }}</strong>
+        <small>Taller mecánico</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Principal">
+      {% for item in navigation %}
+        <a
+          href="{{ url_for(item.endpoint) }}"
+          {% if meta.page_key == item.endpoint.split('.')[-1] %}aria-current="page"{% endif %}
+        >
+          {{ item.label }}
+        </a>
+      {% endfor %}
+    </nav>
+
+    <a
+      class="button button-primary nav-cta"
+      href="https://wa.me/{{ content.contact.whatsapp_number }}?text=Hola%2C%20quiero%20agendar%20una%20revisi%C3%B3n."
+      target="_blank"
+      rel="noreferrer"
+    >
+      Agenda por WhatsApp
+    </a>
+  </div>
+</header>

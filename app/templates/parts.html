@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "partials/cards.html" import part_cards %}
+
+{% block body %}
+  <main class="page-main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Repuestos</span>
+        <h1>Venta asistida de repuestos con respuesta rápida por WhatsApp.</h1>
+        <p>
+          La arquitectura está lista para que esta sección pase más adelante a un
+          inventario o ecommerce real sin rehacer la vista.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        {{ part_cards(content.parts, content.contact.whatsapp_number) }}
+      </div>
+    </section>
+  </main>
+{% endblock %}

@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% from "partials/cards.html" import service_overview_cards, part_cards %}
+
+{% block body %}
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow">{{ content.hero.eyebrow }}</span>
+          <h1>{{ content.hero.title }}</h1>
+          <p>{{ content.hero.description }}</p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://wa.me/{{ content.contact.whatsapp_number }}?text=Hola%2C%20quiero%20cotizar%20una%20reparaci%C3%B3n."
+              target="_blank"
+              rel="noreferrer"
+            >
+              Cotizar ahora
+            </a>
+            <a class="button button-secondary" href="{{ url_for('site.services') }}">
+              Ver servicios
+            </a>
+          </div>
+          <ul class="hero-highlights">
+            {% for item in content.hero.highlights %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <aside class="hero-panel hero-panel-trust">
+          <div class="hero-mini-grid">
+            <div class="stat-card stat-card-compact">
+              <strong>+12 años</strong>
+              <span>atendiendo vehículos particulares y empresas</span>
+            </div>
+            <div class="stat-card stat-card-compact">
+              <strong>Respuesta rápida</strong>
+              <span>cotizaciones y reservas por WhatsApp</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        {% for point in content.trust_points %}
+          <div>
+            <strong>{{ point.title }}</strong>
+            <p>{{ point.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section home-section home-section-services">
+      <div class="container">
+        <div class="section-heading section-heading-compact section-heading-with-action">
+          <div>
+            <span class="eyebrow">Servicios</span>
+            <h2>Servicios mecánicos para diagnóstico, mantención y reparación automotriz.</h2>
+            <p>Cobertura técnica en mantención preventiva, frenos, suspensión, escáner, transmisión, climatización y atención a flotas.</p>
+            <div class="section-heading-cta">
+              <a class="button button-primary" href="{{ url_for('site.services') }}">
+                Ver todos los servicios
+              </a>
+            </div>
+          </div>
+        </div>
+        {{ service_overview_cards(content.services) }}
+      </div>
+    </section>
+
+    <section class="section section-alt home-section home-section-gallery">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Galería</span>
+          <h2>Instalaciones, diagnósticos y trabajos realizados.</h2>
+          <p>Una vista directa del estándar de atención, orden operativo y tipo de trabajos que realizamos.</p>
+        </div>
+
+        <div class="gallery-grid gallery-grid-rich">
+          {% for item in content.gallery %}
+            <figure class="gallery-card gallery-card-interactive">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ item.image }}"
+                data-gallery-title="{{ item.title }}"
+              >
+                <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ item.title }}</figcaption>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-section home-section-brands section-alt-dark">
+      <div class="container">
+        <div class="section-heading section-heading-compact">
+          <span class="eyebrow">Marcas que trabajamos</span>
+          <h2>Atención multimarca para vehículos particulares, SUV y unidades de trabajo.</h2>
+        </div>
+
+        <div class="brands-panel">
+          <div class="brands-marquee" aria-label="Marcas atendidas">
+            <div class="brands-track">
+              {% for brand in content.brands + content.brands %}
+                <span class="brand-pill">
+                  <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
+                </span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Repuestos</span>
+          <h2>Consulta repuestos esenciales con contacto directo y respuesta rápida.</h2>
+          <p>Frenos, mantención y suspensión con atención orientada a stock, compatibilidad y soporte técnico.</p>
+        </div>
+        {{ part_cards(content.parts, content.contact.whatsapp_number) }}
+      </div>
+    </section>
+
+    <section class="section home-section home-section-map">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Ubicación y reseñas</span>
+          <h2>Ubicación visible, presencia local y acceso directo a la ficha pública en Google Maps.</h2>
+          <p>{{ content.google_place.name }} · {{ content.google_place.address }}</p>
+        </div>
+
+        <div class="map-reviews-shell">
+          <div class="map-reviews-summary">
+            <div class="map-summary-top">
+              <span class="map-google-pill">Google Maps</span>
+              <span class="map-rating-pill">{{ content.google_place.rating }} / 5.0</span>
+            </div>
+            <strong>{{ content.google_place.name }}</strong>
+            <span>Calificación visible en Google Maps: {{ content.google_place.rating }}</span>
+            <span>{{ content.google_place.address }}</span>
+            <span>{{ content.google_place.phone }}</span>
+            <div class="map-actions">
+              <a
+                class="button button-primary"
+                href="{{ content.google_place.maps_url }}"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ver ubicación y reseñas
+              </a>
+            </div>
+          </div>
+
+          <div class="map-preview-stack">
+            <a
+              class="map-preview-card"
+              href="{{ content.google_place.maps_url }}"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Abrir ubicación y reseñas del taller en Google Maps"
+            >
+              <div class="map-preview-surface">
+                <span class="map-street map-street-top"></span>
+                <span class="map-street map-street-mid"></span>
+                <span class="map-street map-street-side"></span>
+                <span class="map-block map-block-a"></span>
+                <span class="map-block map-block-b"></span>
+                <span class="map-block map-block-c"></span>
+                <span class="map-block map-block-d"></span>
+                <span class="map-route"></span>
+                <span class="map-pin">
+                  <span class="map-pin-dot"></span>
+                </span>
+                <span class="map-zoom map-zoom-plus">+</span>
+                <span class="map-zoom map-zoom-minus">−</span>
+                <span class="map-place-chip">{{ content.google_place.name }}</span>
+                <span class="map-card-badge">Ver reseñas reales</span>
+                <span class="map-preview-meta">San Bernardo · Taller mecánico</span>
+              </div>
+              <div class="map-preview-copy">
+                <strong>{{ content.google_place.name }}</strong>
+                <span>Abrir en Google Maps para ver ubicación, reseñas, fotos y cómo llegar.</span>
+              </div>
+            </a>
+
+            <div class="map-review-cards">
+              {% for review in content.google_review_cards %}
+                <a
+                  class="map-review-teaser"
+                  href="{{ content.google_place.maps_url }}"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span class="map-review-stars">★★★★★</span>
+                  <strong>{{ review.title }}</strong>
+                  <span>{{ review.summary }}</span>
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container video-layout">
+        <div>
+          <span class="eyebrow">Video</span>
+          <h2>{{ content.video.title }}</h2>
+          <p>{{ content.video.description }}</p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://wa.me/{{ content.contact.whatsapp_number }}?text=Hola%2C%20quiero%20coordinar%20una%20revisi%C3%B3n%20para%20mi%20veh%C3%ADculo."
+              target="_blank"
+              rel="noreferrer"
+            >
+              Hablar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <img src="{{ content.video.poster }}" alt="{{ content.video.title }}" loading="lazy" decoding="async" />
+          <div class="video-card-overlay">
+            <span class="video-play">Play</span>
+            <strong>{{ content.video.label }}</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="gallery-modal" id="gallery-modal">
+    <div class="gallery-modal-inner">
+      <button class="gallery-modal-close" id="gallery-modal-close" type="button" aria-label="Cerrar imagen">
+        Cerrar
+      </button>
+      <img id="gallery-modal-image" src="" alt="" />
+      <strong id="gallery-modal-title"></strong>
+    </div>
+  </dialog>
+{% endblock %}

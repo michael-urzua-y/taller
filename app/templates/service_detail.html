@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <main class="page-main">
+    <section class="page-hero page-hero-service">
+      <div class="container service-hero-layout">
+        <div>
+          <span class="eyebrow">Servicio especializado</span>
+          <h1>{{ service.hero_title }}</h1>
+          <p>{{ service.detail_intro }}</p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://wa.me/{{ content.contact.whatsapp_number }}?text={{ service.whatsapp_message | urlencode }}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Cotizar por WhatsApp
+            </a>
+            <a class="button button-secondary" href="{{ url_for('site.services') }}">
+              Volver a servicios
+            </a>
+          </div>
+        </div>
+
+        <div class="service-hero-card">
+          <img src="{{ service.image }}" alt="{{ service.title }}" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container detail-grid">
+        <article class="detail-card">
+          <h2>Qué incluye</h2>
+          <ul class="detail-list">
+            {% for item in service.includes %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h2>Cuándo aplica</h2>
+          <ul class="detail-list">
+            {% for item in service.applies_to %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h2>Señales frecuentes</h2>
+          <ul class="detail-list">
+            {% for item in service.common_signs %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+{% endblock %}

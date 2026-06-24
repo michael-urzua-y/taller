@@ -1,0 +1,96 @@
+{% macro service_cards(services) -%}
+  <div class="cards-grid">
+    {% for service in services %}
+      <article class="service-card">
+        <img src="{{ service.image }}" alt="{{ service.title }}" loading="lazy" decoding="async" />
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <a class="service-link" href="{{ url_for('site.service_detail', slug=service.slug) }}">
+          Ver más
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+{%- endmacro %}
+
+{% macro service_overview_cards(services) -%}
+  <div class="service-overview-grid">
+    {% for service in services %}
+      <article class="service-overview-card">
+        <h3>{{ service.title }}</h3>
+        <span class="service-overview-icon" aria-hidden="true">
+          {% if service.slug == "mantencion-preventiva" %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 4a2 2 0 0 1 2 2v2.5l2 2V18a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-7.5l2-2V6a2 2 0 0 1 2-2z"/>
+              <path d="M9.5 9h5"/>
+              <path d="M10 13h4"/>
+            </svg>
+          {% elif service.slug == "frenos-suspension" %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="7"/>
+              <circle cx="12" cy="12" r="2.5"/>
+              <path d="M12 5v2"/>
+              <path d="M19 12h-2"/>
+              <path d="M12 19v-2"/>
+              <path d="M5 12h2"/>
+            </svg>
+          {% elif service.slug == "escaner-diagnostico" %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="4" width="14" height="16" rx="2"/>
+              <path d="M9 8h6"/>
+              <path d="M8.5 13.5h2l1.2-2.2 1.6 4.2 1.2-2h1.5"/>
+            </svg>
+          {% elif service.slug == "embrague-transmision" %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="12" cy="12" r="1.8"/>
+              <path d="M12 3v3"/>
+              <path d="M12 18v3"/>
+              <path d="M3 12h3"/>
+              <path d="M18 12h3"/>
+              <path d="M5.6 5.6l2.1 2.1"/>
+              <path d="M16.3 16.3l2.1 2.1"/>
+            </svg>
+          {% elif service.slug == "aire-acondicionado" %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v6"/>
+              <path d="M12 15v6"/>
+              <path d="M4.8 7.2l5.2 3"/>
+              <path d="M14 13.8l5.2 3"/>
+              <path d="M4.8 16.8l5.2-3"/>
+              <path d="M14 10.2l5.2-3"/>
+            </svg>
+          {% else %}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="6" width="16" height="12" rx="2"/>
+              <path d="M8 18v2"/>
+              <path d="M16 18v2"/>
+              <path d="M7 10h10"/>
+            </svg>
+          {% endif %}
+        </span>
+      </article>
+    {% endfor %}
+  </div>
+{%- endmacro %}
+
+{% macro part_cards(parts, whatsapp_number) -%}
+  <div class="parts-grid">
+    {% for part in parts %}
+      <article class="part-card">
+        <img src="{{ part.image }}" alt="{{ part.title }}" loading="lazy" decoding="async" />
+        <div class="part-copy">
+          <h3>{{ part.title }}</h3>
+          <p>{{ part.description }}</p>
+          <a
+            href="https://wa.me/{{ whatsapp_number }}?text={{ part.whatsapp_message | urlencode }}"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Consultar stock
+          </a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{%- endmacro %}

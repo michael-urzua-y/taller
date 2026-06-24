@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <main class="page-main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Nosotros</span>
+        <h1>Una presencia digital pensada para transmitir orden, rapidez y confianza.</h1>
+        <p>
+          Este sitio está diseñado para que el taller se vea actual, profesional y
+          listo para crecer con más funcionalidad cuando la necesites.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split-layout">
+        <div>
+          <h2>Base técnica sólida</h2>
+          <p>
+            Separación por capas, contenido centralizado, validación de datos y
+            frontend liviano para una navegación ágil.
+          </p>
+          <ul class="check-list">
+            {% for feature in content.features %}
+              <li>{{ feature }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="info-panel">
+          <h3>Horarios y cobertura</h3>
+          <dl>
+            {% for label, value in content.business_details %}
+              <div>
+                <dt>{{ label }}</dt>
+                <dd>{{ value }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-heading section-heading-light">
+          <span class="eyebrow">Confianza</span>
+          <h2>Mensajes pensados para respaldar la decisión del cliente.</h2>
+        </div>
+        <div class="testimonial-grid">
+          {% for testimonial in content.testimonials %}
+            <blockquote>{{ testimonial }}</blockquote>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

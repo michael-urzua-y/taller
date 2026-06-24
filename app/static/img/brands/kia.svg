@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64" fill="none">
+  <rect width="240" height="64" rx="16" fill="white"/>
+  <text x="24" y="41" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900" letter-spacing="1">KIA</text>
+  <path d="M22 19H74" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 44H74" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+</svg>
