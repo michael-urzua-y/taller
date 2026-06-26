@@ -5,17 +5,15 @@
   <main class="page-main">
     <section class="page-hero page-hero-services">
       <div class="container services-hero-simple">
-        <span class="eyebrow">Servicios</span>
-        <h1>Atención mecánica especializada para diagnóstico, mantención y reparación.</h1>
-        <p>
-          Soluciones técnicas para vehículos particulares, SUV y flotas, con enfoque en seguridad, rendimiento y continuidad operativa.
-        </p>
+        <span class="eyebrow">{{ content.services_page.eyebrow }}</span>
+        <h1>{{ content.services_page.title }}</h1>
+        <p>{{ content.services_page.description }}</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        {{ service_cards(content.services) }}
+        {{ service_cards(content.services, content.site_copy) }}
       </div>
     </section>
   </main>

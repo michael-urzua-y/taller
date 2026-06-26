@@ -6,13 +6,13 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 
-def _fetch_json(url: str) -> dict:
-    request = Request(url, headers={"User-Agent": "MotorLab/1.0"})
+def _fetch_json(url: str, user_agent: str) -> dict:
+    request = Request(url, headers={"User-Agent": user_agent})
     with urlopen(request, timeout=8) as response:  # nosec B310
         return json.loads(response.read().decode("utf-8"))
 
 
-def _resolve_place_id(api_key: str, query: str) -> Optional[str]:
+def _resolve_place_id(api_key: str, query: str, user_agent: str) -> Optional[str]:
     if not query:
         return None
 
@@ -20,21 +20,21 @@ def _resolve_place_id(api_key: str, query: str) -> Optional[str]:
         "https://maps.googleapis.com/maps/api/place/findplacefromtext/json"
         f"?input={quote(query)}&inputtype=textquery&fields=place_id&key={quote(api_key)}"
     )
-    payload = _fetch_json(url)
+    payload = _fetch_json(url, user_agent)
     candidates = payload.get("candidates", [])
     if not candidates:
         return None
     return candidates[0].get("place_id")
 
 
-def _fetch_place_details(api_key: str, place_id: str) -> Optional[dict]:
+def _fetch_place_details(api_key: str, place_id: str, user_agent: str) -> Optional[dict]:
     url = (
         "https://maps.googleapis.com/maps/api/place/details/json"
         f"?place_id={quote(place_id)}"
         "&fields=name,rating,user_ratings_total,formatted_address,url,reviews"
         f"&key={quote(api_key)}"
     )
-    payload = _fetch_json(url)
+    payload = _fetch_json(url, user_agent)
     result = payload.get("result")
     if not result:
         return None
@@ -44,19 +44,20 @@ def _fetch_place_details(api_key: str, place_id: str) -> Optional[dict]:
 def get_google_reviews(config, fallback_place: dict, fallback_cards: list[dict]) -> tuple[dict, list[dict], bool]:
     api_key = config.get("GOOGLE_PLACES_API_KEY", "")
     maps_url = config.get("GOOGLE_PLACE_URL", fallback_place["maps_url"])
+    user_agent = config.get("GOOGLE_API_USER_AGENT", "MotorLab/1.0")
 
     if not api_key:
         return fallback_place, fallback_cards, False
 
     place_id = config.get("GOOGLE_PLACE_ID", "")
     if not place_id:
-        place_id = _resolve_place_id(api_key, config.get("GOOGLE_PLACE_QUERY", ""))
+        place_id = _resolve_place_id(api_key, config.get("GOOGLE_PLACE_QUERY", ""), user_agent)
 
     if not place_id:
         return fallback_place, fallback_cards, False
 
     try:
-        details = _fetch_place_details(api_key, place_id)
+        details = _fetch_place_details(api_key, place_id, user_agent)
     except Exception:
         return fallback_place, fallback_cards, False
 

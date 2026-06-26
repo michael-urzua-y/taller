@@ -1,4 +1,4 @@
-{% macro service_cards(services) -%}
+{% macro service_cards(services, site_copy) -%}
   <div class="cards-grid">
     {% for service in services %}
       <article class="service-card">
@@ -6,7 +6,7 @@
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
         <a class="service-link" href="{{ url_for('site.service_detail', slug=service.slug) }}">
-          Ver más
+          {{ site_copy.service_link_label }}
         </a>
       </article>
     {% endfor %}
@@ -74,7 +74,7 @@
   </div>
 {%- endmacro %}
 
-{% macro part_cards(parts, whatsapp_number) -%}
+{% macro part_cards(parts, whatsapp_number, site_copy) -%}
   <div class="parts-grid">
     {% for part in parts %}
       <article class="part-card">
@@ -87,7 +87,7 @@
             target="_blank"
             rel="noreferrer"
           >
-            Consultar stock
+            {{ site_copy.parts_cta_label }}
           </a>
         </div>
       </article>

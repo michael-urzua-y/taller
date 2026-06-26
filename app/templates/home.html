@@ -13,14 +13,14 @@
           <div class="hero-actions">
             <a
               class="button button-primary"
-              href="https://wa.me/{{ content.contact.whatsapp_number }}?text=Hola%2C%20quiero%20cotizar%20una%20reparaci%C3%B3n."
+              href="https://wa.me/{{ content.contact.whatsapp_number }}?text={{ content.hero.primary_cta_message | urlencode }}"
               target="_blank"
               rel="noreferrer"
             >
-              Cotizar ahora
+              {{ content.hero.primary_cta_label }}
             </a>
             <a class="button button-secondary" href="{{ url_for('site.services') }}">
-              Ver servicios
+              {{ content.hero.secondary_cta_label }}
             </a>
           </div>
           <ul class="hero-highlights">
@@ -30,7 +30,7 @@
           </ul>
         </div>
 
-        <aside class="hero-panel hero-panel-trust">
+        <!-- <aside class="hero-panel hero-panel-trust">
           <div class="hero-mini-grid">
             <div class="stat-card stat-card-compact">
               <strong>+12 años</strong>
@@ -41,7 +41,7 @@
               <span>cotizaciones y reservas por WhatsApp</span>
             </div>
           </div>
-        </aside>
+        </aside> -->
       </div>
     </section>
 
@@ -60,12 +60,12 @@
       <div class="container">
         <div class="section-heading section-heading-compact section-heading-with-action">
           <div>
-            <span class="eyebrow">Servicios</span>
-            <h2>Servicios mecánicos para diagnóstico, mantención y reparación automotriz.</h2>
-            <p>Cobertura técnica en mantención preventiva, frenos, suspensión, escáner, transmisión, climatización y atención a flotas.</p>
+            <span class="eyebrow">{{ content.home_sections.services.eyebrow }}</span>
+            <h2>{{ content.home_sections.services.title }}</h2>
+            <p>{{ content.home_sections.services.description }}</p>
             <div class="section-heading-cta">
               <a class="button button-primary" href="{{ url_for('site.services') }}">
-                Ver todos los servicios
+                {{ content.home_sections.services.cta_label }}
               </a>
             </div>
           </div>
@@ -74,41 +74,15 @@
       </div>
     </section>
 
-    <section class="section section-alt home-section home-section-gallery">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Galería</span>
-          <h2>Instalaciones, diagnósticos y trabajos realizados.</h2>
-          <p>Una vista directa del estándar de atención, orden operativo y tipo de trabajos que realizamos.</p>
-        </div>
-
-        <div class="gallery-grid gallery-grid-rich">
-          {% for item in content.gallery %}
-            <figure class="gallery-card gallery-card-interactive">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ item.image }}"
-                data-gallery-title="{{ item.title }}"
-              >
-                <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ item.title }}</figcaption>
-            </figure>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-
     <section class="section home-section home-section-brands section-alt-dark">
       <div class="container">
         <div class="section-heading section-heading-compact">
-          <span class="eyebrow">Marcas que trabajamos</span>
-          <h2>Atención multimarca para vehículos particulares, SUV y unidades de trabajo.</h2>
+          <span class="eyebrow">{{ content.home_sections.brands.eyebrow }}</span>
+          <h2>{{ content.home_sections.brands.title }}</h2>
         </div>
 
         <div class="brands-panel">
-          <div class="brands-marquee" aria-label="Marcas atendidas">
+          <div class="brands-marquee" aria-label="{{ content.home_sections.brands.aria_label }}">
             <div class="brands-track">
               {% for brand in content.brands + content.brands %}
                 <span class="brand-pill">
@@ -124,30 +98,140 @@
     <section class="section section-alt">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Repuestos</span>
-          <h2>Consulta repuestos esenciales con contacto directo y respuesta rápida.</h2>
-          <p>Frenos, mantención y suspensión con atención orientada a stock, compatibilidad y soporte técnico.</p>
+          <span class="eyebrow">{{ content.home_sections.parts.eyebrow }}</span>
+          <h2>{{ content.home_sections.parts.title }}</h2>
+          <p>{{ content.home_sections.parts.description }}</p>
         </div>
-        {{ part_cards(content.parts, content.contact.whatsapp_number) }}
+        {{ part_cards(content.parts, content.contact.whatsapp_number, content.site_copy) }}
+      </div>
+    </section>
+
+    <section class="section section-alt home-section home-section-gallery">
+      <div class="container">
+        <div class="section-heading section-heading-compact media-heading-row">
+          <span class="eyebrow">{{ content.home_sections.gallery.eyebrow }}</span>
+          <h2>{{ content.home_sections.gallery.title }}</h2>
+          <p>{{ content.home_sections.gallery.description }}</p>
+        </div>
+
+        <div class="media-carousel-shell">
+          <div class="media-carousel-track" data-media-track>
+            <figure class="gallery-card gallery-card-interactive media-carousel-item media-carousel-item-feature">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ content.gallery[0].image }}"
+                data-gallery-title="{{ content.gallery[0].title }}"
+              >
+                <img src="{{ content.gallery[0].image }}" alt="{{ content.gallery[0].title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ content.gallery[0].title }}</figcaption>
+            </figure>
+
+            <figure class="gallery-card gallery-card-interactive media-carousel-item">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ content.gallery[1].image }}"
+                data-gallery-title="{{ content.gallery[1].title }}"
+              >
+                <img src="{{ content.gallery[1].image }}" alt="{{ content.gallery[1].title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ content.gallery[1].title }}</figcaption>
+            </figure>
+
+            <figure class="gallery-card gallery-card-interactive media-carousel-item">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ content.gallery[2].image }}"
+                data-gallery-title="{{ content.gallery[2].title }}"
+              >
+                <img src="{{ content.gallery[2].image }}" alt="{{ content.gallery[2].title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ content.gallery[2].title }}</figcaption>
+            </figure>
+
+            <figure class="gallery-card gallery-card-interactive media-carousel-item">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ content.gallery[3].image }}"
+                data-gallery-title="{{ content.gallery[3].title }}"
+              >
+                <img src="{{ content.gallery[3].image }}" alt="{{ content.gallery[3].title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ content.gallery[3].title }}</figcaption>
+            </figure>
+
+            <figure class="gallery-card gallery-card-interactive media-carousel-item">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ content.gallery[4].image }}"
+                data-gallery-title="{{ content.gallery[4].title }}"
+              >
+                <img src="{{ content.gallery[4].image }}" alt="{{ content.gallery[4].title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ content.gallery[4].title }}</figcaption>
+            </figure>
+
+            <figure class="gallery-card gallery-card-interactive media-carousel-item">
+              <button
+                class="gallery-button"
+                type="button"
+                data-gallery-image="{{ content.gallery[5].image }}"
+                data-gallery-title="{{ content.gallery[5].title }}"
+              >
+                <img src="{{ content.gallery[5].image }}" alt="{{ content.gallery[5].title }}" loading="lazy" decoding="async" />
+              </button>
+              <figcaption>{{ content.gallery[5].title }}</figcaption>
+            </figure>
+            <article class="media-carousel-item media-carousel-item-video">
+              <button
+                class="gallery-button media-video-button"
+                type="button"
+                data-gallery-image="{{ content.video.poster }}"
+                data-gallery-title="{{ content.video.title }}"
+              >
+                <img src="{{ content.video.poster }}" alt="{{ content.video.title }}" loading="lazy" decoding="async" />
+                <span class="media-video-overlay">
+                  <span class="media-video-play">{{ content.video.play_label }}</span>
+                  <strong>{{ content.video.title }}</strong>
+                  <span>{{ content.video.label }}</span>
+                </span>
+              </button>
+            </article>
+          </div>
+        </div>
+
+        <div class="media-carousel-actions media-carousel-actions-bottom" aria-label="{{ content.home_sections.gallery.controls_aria_label }}">
+          <button class="media-carousel-control" type="button" data-media-prev aria-label="{{ content.home_sections.gallery.prev_aria_label }}">
+            <span>←</span>
+          </button>
+          <button class="media-carousel-control" type="button" data-media-next aria-label="{{ content.home_sections.gallery.next_aria_label }}">
+            <span>→</span>
+          </button>
+        </div>
       </div>
     </section>
 
     <section class="section home-section home-section-map">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Ubicación y reseñas</span>
-          <h2>Ubicación visible, presencia local y acceso directo a la ficha pública en Google Maps.</h2>
+          <span class="eyebrow">{{ content.home_sections.map.eyebrow }}</span>
+          <h2>{{ content.home_sections.map.title }}</h2>
           <p>{{ content.google_place.name }} · {{ content.google_place.address }}</p>
         </div>
 
         <div class="map-reviews-shell">
           <div class="map-reviews-summary">
             <div class="map-summary-top">
-              <span class="map-google-pill">Google Maps</span>
-              <span class="map-rating-pill">{{ content.google_place.rating }} / 5.0</span>
+              <span class="map-google-pill">{{ content.home_sections.map.maps_pill_label }}</span>
+              <span class="map-rating-pill">{{ content.google_place.rating }} {{ content.home_sections.map.rating_scale }}</span>
             </div>
             <strong>{{ content.google_place.name }}</strong>
-            <span>Calificación visible en Google Maps: {{ content.google_place.rating }}</span>
+            <span>{{ content.home_sections.map.summary_rating_label }} {{ content.google_place.rating }}</span>
             <span>{{ content.google_place.address }}</span>
             <span>{{ content.google_place.phone }}</span>
             <div class="map-actions">
@@ -157,7 +241,7 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                Ver ubicación y reseñas
+                {{ content.home_sections.map.primary_cta }}
               </a>
             </div>
           </div>
@@ -168,7 +252,7 @@
               href="{{ content.google_place.maps_url }}"
               target="_blank"
               rel="noreferrer"
-              aria-label="Abrir ubicación y reseñas del taller en Google Maps"
+              aria-label="{{ content.home_sections.map.card_aria_label }}"
             >
               <div class="map-preview-surface">
                 <span class="map-street map-street-top"></span>
@@ -185,12 +269,12 @@
                 <span class="map-zoom map-zoom-plus">+</span>
                 <span class="map-zoom map-zoom-minus">−</span>
                 <span class="map-place-chip">{{ content.google_place.name }}</span>
-                <span class="map-card-badge">Ver reseñas reales</span>
-                <span class="map-preview-meta">San Bernardo · Taller mecánico</span>
+                <span class="map-card-badge">{{ content.home_sections.map.card_badge }}</span>
+                <span class="map-preview-meta">{{ content.home_sections.map.preview_meta }}</span>
               </div>
               <div class="map-preview-copy">
                 <strong>{{ content.google_place.name }}</strong>
-                <span>Abrir en Google Maps para ver ubicación, reseñas, fotos y cómo llegar.</span>
+                <span>{{ content.home_sections.map.preview_summary }}</span>
               </div>
             </a>
 
@@ -202,7 +286,7 @@
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span class="map-review-stars">★★★★★</span>
+                  <span class="map-review-stars">{{ content.home_sections.map.review_stars }}</span>
                   <strong>{{ review.title }}</strong>
                   <span>{{ review.summary }}</span>
                 </a>
@@ -212,40 +296,12 @@
         </div>
       </div>
     </section>
-
-    <section class="section section-alt">
-      <div class="container video-layout">
-        <div>
-          <span class="eyebrow">Video</span>
-          <h2>{{ content.video.title }}</h2>
-          <p>{{ content.video.description }}</p>
-          <div class="hero-actions">
-            <a
-              class="button button-primary"
-              href="https://wa.me/{{ content.contact.whatsapp_number }}?text=Hola%2C%20quiero%20coordinar%20una%20revisi%C3%B3n%20para%20mi%20veh%C3%ADculo."
-              target="_blank"
-              rel="noreferrer"
-            >
-              Hablar por WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <div class="video-card">
-          <img src="{{ content.video.poster }}" alt="{{ content.video.title }}" loading="lazy" decoding="async" />
-          <div class="video-card-overlay">
-            <span class="video-play">Play</span>
-            <strong>{{ content.video.label }}</strong>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <dialog class="gallery-modal" id="gallery-modal">
     <div class="gallery-modal-inner">
-      <button class="gallery-modal-close" id="gallery-modal-close" type="button" aria-label="Cerrar imagen">
-        Cerrar
+      <button class="gallery-modal-close" id="gallery-modal-close" type="button" aria-label="{{ content.site_copy.gallery_modal_close_aria_label }}">
+        {{ content.site_copy.gallery_modal_close_label }}
       </button>
       <img id="gallery-modal-image" src="" alt="" />
       <strong id="gallery-modal-title"></strong>

@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from collections import defaultdict
+from copy import deepcopy
+
 from flask import current_app
 
 from app.domain.site_content import build_site_content
@@ -7,12 +10,22 @@ from app.services.google_reviews_service import get_google_reviews
 
 
 def build_navigation() -> list[dict[str, str]]:
-    return [
-        {"endpoint": "site.home", "label": "Inicio"},
-        {"endpoint": "site.services", "label": "Servicios"},
-        {"endpoint": "site.parts", "label": "Repuestos"},
-        {"endpoint": "site.about", "label": "Nosotros"},
-    ]
+    return deepcopy(current_app.config["NAVIGATION"])
+
+
+def resolve_page_meta(page_key: str, **kwargs) -> dict[str, str]:
+    page_meta = deepcopy(current_app.config["PAGE_META"].get(page_key, {}))
+    format_values = defaultdict(
+        str,
+        {
+            "site_name": current_app.config["SITE_NAME"],
+            **kwargs,
+        },
+    )
+    return {
+        "title": page_meta.get("title_template", "{site_name}").format_map(format_values),
+        "description": page_meta.get("description_template", "").format_map(format_values),
+    }
 
 
 def build_site_context(page_key: str, *, title: str, description: str) -> dict:

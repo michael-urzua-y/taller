@@ -5,18 +5,15 @@
   <main class="page-main">
     <section class="page-hero">
       <div class="container">
-        <span class="eyebrow">Repuestos</span>
-        <h1>Venta asistida de repuestos con respuesta rápida por WhatsApp.</h1>
-        <p>
-          La arquitectura está lista para que esta sección pase más adelante a un
-          inventario o ecommerce real sin rehacer la vista.
-        </p>
+        <span class="eyebrow">{{ content.parts_page.eyebrow }}</span>
+        <h1>{{ content.parts_page.title }}</h1>
+        <p>{{ content.parts_page.description }}</p>
       </div>
     </section>
 
     <section class="section section-alt">
       <div class="container">
-        {{ part_cards(content.parts, content.contact.whatsapp_number) }}
+        {{ part_cards(content.parts, content.contact.whatsapp_number, content.site_copy) }}
       </div>
     </section>
   </main>

@@ -5,7 +5,7 @@
     <section class="page-hero page-hero-service">
       <div class="container service-hero-layout">
         <div>
-          <span class="eyebrow">Servicio especializado</span>
+          <span class="eyebrow">{{ content.service_detail_page.eyebrow }}</span>
           <h1>{{ service.hero_title }}</h1>
           <p>{{ service.detail_intro }}</p>
           <div class="hero-actions">
@@ -15,10 +15,10 @@
               target="_blank"
               rel="noreferrer"
             >
-              Cotizar por WhatsApp
+              {{ content.service_detail_page.cta_label }}
             </a>
             <a class="button button-secondary" href="{{ url_for('site.services') }}">
-              Volver a servicios
+              {{ content.service_detail_page.back_label }}
             </a>
           </div>
         </div>
@@ -32,7 +32,7 @@
     <section class="section">
       <div class="container detail-grid">
         <article class="detail-card">
-          <h2>Qué incluye</h2>
+          <h2>{{ content.service_detail_page.includes_title }}</h2>
           <ul class="detail-list">
             {% for item in service.includes %}
               <li>{{ item }}</li>
@@ -41,7 +41,7 @@
         </article>
 
         <article class="detail-card">
-          <h2>Cuándo aplica</h2>
+          <h2>{{ content.service_detail_page.applies_title }}</h2>
           <ul class="detail-list">
             {% for item in service.applies_to %}
               <li>{{ item }}</li>
@@ -50,7 +50,7 @@
         </article>
 
         <article class="detail-card">
-          <h2>Señales frecuentes</h2>
+          <h2>{{ content.service_detail_page.signs_title }}</h2>
           <ul class="detail-list">
             {% for item in service.common_signs %}
               <li>{{ item }}</li>
