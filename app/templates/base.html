@@ -18,10 +18,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
   </head>
   <body>
+    <div class="site-wrapper">
     {% include "partials/whatsapp_float.html" %}
     {% include "partials/header.html" %}
     {% block body %}{% endblock %}
     {% include "partials/footer.html" %}
+    </div>
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
   </body>
 </html>

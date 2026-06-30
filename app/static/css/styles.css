@@ -18,6 +18,12 @@
   box-sizing: border-box;
 }
 
+.site-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -892,7 +898,6 @@ button {
 .home-section-brands .section-heading-compact h2 {
   max-width: none;
   width: 100%;
-  white-space: nowrap;
 }
 
 .brands-marquee {
@@ -1592,6 +1597,7 @@ button {
 
   .nav-cta {
     width: 100%;
+    text-align: center;
   }
 
   .hero {
@@ -1683,6 +1689,24 @@ button {
     animation-duration: 28s;
   }
 
+  .brands-marquee {
+    border-radius: 18px;
+  }
+
+  .section-bottom-cta {
+    margin-top: 1.5rem;
+  }
+
+  .whatsapp-float {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: 54px;
+    height: 54px;
+  }
+
+  .home-section-map .section-heading h2 {
+    white-space: normal;
+  }
 }
 
 @media (min-width: 1180px) {
