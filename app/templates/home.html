@@ -58,19 +58,19 @@
 
     <section class="section home-section home-section-services">
       <div class="container">
-        <div class="section-heading section-heading-compact section-heading-with-action">
+        <div class="section-heading section-heading-compact">
           <div>
             <span class="eyebrow">{{ content.home_sections.services.eyebrow }}</span>
             <h2>{{ content.home_sections.services.title }}</h2>
             <p>{{ content.home_sections.services.description }}</p>
-            <div class="section-heading-cta">
-              <a class="button button-primary" href="{{ url_for('site.services') }}">
-                {{ content.home_sections.services.cta_label }}
-              </a>
-            </div>
           </div>
         </div>
         {{ service_overview_cards(content.services) }}
+        <div class="section-bottom-cta">
+          <a class="button button-primary" href="{{ url_for('site.services') }}">
+            {{ content.home_sections.services.cta_label }}
+          </a>
+        </div>
       </div>
     </section>
 
@@ -97,12 +97,19 @@
 
     <section class="section section-alt">
       <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">{{ content.home_sections.parts.eyebrow }}</span>
-          <h2>{{ content.home_sections.parts.title }}</h2>
-          <p>{{ content.home_sections.parts.description }}</p>
+        <div class="section-heading section-heading-compact">
+          <div>
+            <span class="eyebrow">{{ content.home_sections.parts.eyebrow }}</span>
+            <h2>{{ content.home_sections.parts.title }}</h2>
+            <p class="section-description-single">{{ content.home_sections.parts.description }}</p>
+          </div>
         </div>
         {{ part_cards(content.parts, content.contact.whatsapp_number, content.site_copy) }}
+        <div class="section-bottom-cta">
+          <a class="button button-primary" href="{{ url_for('site.products') }}">
+            {{ content.home_sections.parts.cta_label }}
+          </a>
+        </div>
       </div>
     </section>
 
@@ -277,21 +284,6 @@
                 <span>{{ content.home_sections.map.preview_summary }}</span>
               </div>
             </a>
-
-            <div class="map-review-cards">
-              {% for review in content.google_review_cards %}
-                <a
-                  class="map-review-teaser"
-                  href="{{ content.google_place.maps_url }}"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span class="map-review-stars">{{ content.home_sections.map.review_stars }}</span>
-                  <strong>{{ review.title }}</strong>
-                  <span>{{ review.summary }}</span>
-                </a>
-              {% endfor %}
-            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <main class="page-main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Productos</span>
+        <h1>Nuestros Productos</h1>
+        <p>Aceites, lubricantes y productos de calidad para el cuidado y mantención de tu vehículo.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="products-grid">
+          {% for product in content.products %}
+            <article class="product-card">
+              <a href="{{ url_for('site.product_detail', slug=product.slug) }}" class="product-card-link">
+                <div class="product-card-image">
+                  <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
+                </div>
+                <div class="product-card-body">
+                  <span class="product-card-category">{{ product.category }}</span>
+                  <h3>{{ product.title }}</h3>
+                  <p>{{ product.short_description }}</p>
+                  <span class="product-card-cta">Ver producto</span>
+                </div>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

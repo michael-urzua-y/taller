@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_NAVIGATION = [
     {"endpoint": "site.home", "label": "Inicio"},
     {"endpoint": "site.services", "label": "Servicios"},
-    {"endpoint": "site.parts", "label": "Repuestos"},
+    {"endpoint": "site.parts", "label": "Repuestos / Productos"},
     {"endpoint": "site.about", "label": "Nosotros"},
 ]
 
@@ -30,8 +30,16 @@ DEFAULT_PAGE_META = {
         "description_template": "{service_description}",
     },
     "parts": {
-        "title_template": "Repuestos | {site_name}",
-        "description_template": "Consulta de repuestos para frenos, mantención y suspensión con atención por WhatsApp.",
+        "title_template": "Repuestos / Productos | {site_name}",
+        "description_template": "Consulta de repuestos y productos para frenos, mantención y suspensión con atención por WhatsApp.",
+    },
+    "products": {
+        "title_template": "Productos | {site_name}",
+        "description_template": "Catálogo de productos: aceites, lubricantes y más para tu vehículo.",
+    },
+    "product_detail": {
+        "title_template": "{product_name} | {site_name}",
+        "description_template": "{product_description}",
     },
     "about": {
         "title_template": "Nosotros | {site_name}",
@@ -60,7 +68,7 @@ DEFAULT_SERVICE_CATALOG = [
         "slug": "mantencion-preventiva",
         "title": "Mantención preventiva",
         "description": "Cambio de aceite, filtros, revisión de niveles y chequeo general para mantener el vehículo en condiciones óptimas.",
-        "image": "/static/img/services/maintenance.jpg",
+        "image": "/static/img/services/maintenance.webp",
         "hero_title": "Mantención preventiva para cuidar rendimiento, seguridad y vida útil del vehículo.",
         "detail_intro": "La mantención preventiva permite anticiparse al desgaste natural del vehículo y evitar fallas mayores. Es una de las intervenciones más importantes para conservar rendimiento, consumo y seguridad.",
         "includes": [
@@ -85,7 +93,7 @@ DEFAULT_SERVICE_CATALOG = [
         "slug": "frenos-suspension",
         "title": "Frenos y suspensión",
         "description": "Revisión y reparación de pastillas, discos, amortiguadores, bandejas, terminales y otros componentes críticos.",
-        "image": "/static/img/services/brakes-suspension.jpg",
+        "image": "/static/img/services/brakes-suspension.webp",
         "hero_title": "Frenos y suspensión con enfoque en seguridad, control y confort de manejo.",
         "detail_intro": "Trabajamos el sistema de frenado y suspensión como un conjunto clave para la seguridad. Una inspección correcta permite detectar desgaste, holguras y componentes comprometidos antes de que afecten la conducción.",
         "includes": [
@@ -110,7 +118,7 @@ DEFAULT_SERVICE_CATALOG = [
         "slug": "escaner-diagnostico",
         "title": "Escáner y diagnóstico",
         "description": "Lectura de fallas, análisis técnico y orientación clara para detectar el origen del problema antes de reparar.",
-        "image": "/static/img/services/diagnostic.jpg",
+        "image": "/static/img/services/diagnostic.webp",
         "hero_title": "Diagnóstico electrónico y evaluación técnica para decisiones más precisas.",
         "detail_intro": "No se trata solo de leer códigos. Un buen diagnóstico combina escáner, inspección visual y criterio técnico para identificar la causa de la falla y no solo su síntoma.",
         "includes": [
@@ -135,7 +143,7 @@ DEFAULT_SERVICE_CATALOG = [
         "slug": "embrague-transmision",
         "title": "Embrague y transmisión",
         "description": "Inspección, ajuste y reemplazo de componentes de embrague y transmisión para una conducción segura y estable.",
-        "image": "/static/img/services/clutch-transmission.jpg",
+        "image": "/static/img/services/clutch-transmission.webp",
         "hero_title": "Servicio de embrague y transmisión orientado a respuesta, tracción y continuidad operativa.",
         "detail_intro": "Los problemas de embrague o transmisión suelen escalar rápido si no se revisan a tiempo. Evaluamos el sistema completo para definir si corresponde ajuste, reparación o reemplazo.",
         "includes": [
@@ -160,7 +168,7 @@ DEFAULT_SERVICE_CATALOG = [
         "slug": "aire-acondicionado",
         "title": "Aire acondicionado",
         "description": "Diagnóstico, carga de gas, revisión de fugas y mantención del sistema de climatización del vehículo.",
-        "image": "/static/img/services/air-conditioning.jpg",
+        "image": "/static/img/services/air-conditioning.webp",
         "hero_title": "Aire acondicionado automotriz con revisión completa del sistema y control de fugas.",
         "detail_intro": "El sistema de climatización necesita más que una simple recarga. Revisamos presión, funcionamiento y posibles fugas para asegurar un servicio duradero y no una solución temporal.",
         "includes": [
@@ -185,7 +193,7 @@ DEFAULT_SERVICE_CATALOG = [
         "slug": "atencion-flotas",
         "title": "Atención a flotas",
         "description": "Gestión de mantenciones periódicas y soporte técnico para vehículos de trabajo, empresas y operaciones comerciales.",
-        "image": "/static/img/services/fleet-service.jpg",
+        "image": "/static/img/services/fleet-service.webp",
         "hero_title": "Atención técnica para flotas con foco en continuidad operativa y planificación.",
         "detail_intro": "Cuando una flota se detiene, el negocio lo siente. Ordenamos mantenciones, diagnósticos y prioridades para reducir tiempos muertos y mantener los vehículos operativos.",
         "includes": [
@@ -207,6 +215,219 @@ DEFAULT_SERVICE_CATALOG = [
         "whatsapp_message": "Hola, les hablo desde el sitio web y quiero solicitar una cotización correspondiente al servicio de atención y mantención de flotas. Quedo atento a su información.",
     },
 ]
+
+DEFAULT_PRODUCT_CATALOG = [
+    {
+        "slug": "aceite-totalenergies-quartz-ineo-mc3-5w30-5l",
+        "title": "Aceite de Motor TotalEnergies QUARTZ INEO MC3 5W-30 5 Litros",
+        "short_description": "Aceite sintético 5W-30 para motores diésel y gasolina con filtro de partículas. Envase de 5 litros.",
+        "image": "/static/img/products/aceite-ineo-mc3-5w30-5l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "QUARTZ INEO MC3 asegura el óptimo funcionamiento de los convertidores catalíticos de tres vías y los filtros de partículas. Además, contribuye a reducir las emisiones de NOx, CO2, CO y partículas, lo que garantiza el cumplimiento de los niveles de rendimiento exigidos por los fabricantes y las normas medioambientales EURO V. Gracias a su formulación avanzada, prolonga la vida útil de los sistemas de post-tratamiento, previniendo tanto la obstrucción como el llenado prematuro de los filtros de partículas y del convertidor catalítico de tres vías. Por otro lado, su excelente resistencia a las variaciones de temperatura asegura la longevidad de las partes del motor, manteniendo un nivel óptimo de rendimiento en todo tipo de condiciones. Asimismo, satisface los planes de servicio más exigentes de los fabricantes, permitiendo intervalos de cambio de aceite extra-largos sin comprometer la protección del motor.",
+        "recommendations": [
+            "Antes de utilizar el producto, consulta siempre la guía de mantenimiento del vehículo.",
+            "Realiza los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Mantener alejado de la luz solar directa, el frío extremo y las fluctuaciones bruscas de temperatura.",
+            "Evitar la exposición del embalaje a la intemperie. En caso de ser inevitable, colocar los tambores en posición horizontal para prevenir la contaminación por agua y proteger la etiqueta del producto.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 5W-30",
+            "Viscosidad cinemática a 40 °C: 69 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 12 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 852 kg/m³ (ASTM D4052)",
+            "Índice de viscosidad: 171 (ASTM D2270)",
+            "Punto de congelación: -36 °C (ASTM D97)",
+            "Punto de inflamación: 233 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ INEO MC3 5W-30 5 Litros.",
+    },
+    {
+        "slug": "aceite-totalenergies-quartz-ineo-mc3-5w30-1l",
+        "title": "Aceite de Motor TotalEnergies QUARTZ INEO MC3 5W-30 1 Litro",
+        "short_description": "Aceite sintético 5W-30 para motores diésel y gasolina. Envase de 1 litro ideal para reposición.",
+        "image": "/static/img/products/aceite-ineo-mc3-5w30-1l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "QUARTZ INEO MC3 asegura el óptimo funcionamiento de los convertidores catalíticos de tres vías y los filtros de partículas. Contribuye a reducir las emisiones de NOx, CO2, CO y partículas, cumpliendo con los niveles de rendimiento exigidos por los fabricantes y las normas medioambientales EURO V. Prolonga la vida útil de los sistemas de post-tratamiento, previniendo la obstrucción y el llenado prematuro de los filtros de partículas. Su excelente resistencia a las variaciones de temperatura asegura la longevidad de las partes del motor en todo tipo de condiciones.",
+        "recommendations": [
+            "Antes de utilizar el producto, consulta siempre la guía de mantenimiento del vehículo.",
+            "Realiza los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Mantener alejado de la luz solar directa, el frío extremo y las fluctuaciones bruscas de temperatura.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 5W-30",
+            "Viscosidad cinemática a 40 °C: 69 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 12 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 852 kg/m³ (ASTM D4052)",
+            "Índice de viscosidad: 171 (ASTM D2270)",
+            "Punto de congelación: -36 °C (ASTM D97)",
+            "Punto de inflamación: 233 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ INEO MC3 5W-30 1 Litro.",
+    },
+    {
+        "slug": "aceite-totalenergies-quartz-ineo-first-0w30-5l",
+        "title": "Aceite de Motor TotalEnergies QUARTZ INEO FIRST 0W-30 5 Litros",
+        "short_description": "Aceite sintético 0W-30 de última generación para máxima eficiencia y protección. Envase de 5 litros.",
+        "image": "/static/img/products/aceite-ineo-first-0w30-5l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "Ahorro de combustible: Ofrece una mejora del 2,61% en eficiencia energética, según la prueba oficial M111 FE. Arranques en frío más fáciles: Gracias a su grado 0W-30 y aditivos especiales, facilita el encendido del motor incluso en temperaturas extremas, con validaciones realizadas hasta -40 °C. Protección para sistemas de control de emisiones: Optimiza el funcionamiento de catalizadores de tres vías y filtros de partículas, evitando obstrucciones por hollín o lodos. Además, reduce emisiones de NOx, HC y CO. Protección y limpieza del motor: Brinda una defensa superior contra el desgaste y la obstrucción desde el primer arranque, manteniendo el motor limpio y eficiente.",
+        "recommendations": [
+            "Consultar el manual de mantenimiento del vehículo antes de utilizar el producto.",
+            "Realizar los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Proteger el producto de la luz solar directa, el frío extremo y las fluctuaciones térmicas.",
+            "Evitar que los envases se expongan a la intemperie. En caso necesario, colocarlos en posición horizontal para prevenir contaminación y proteger la etiqueta.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 0W-30",
+            "Viscosidad cinemática a 40 °C: 50.34 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 9.9 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 844 kg/m³ (ASTM D1298)",
+            "Índice de viscosidad: 187 (ASTM D2270)",
+            "Punto de escurrimiento: -42 °C (ASTM D97)",
+            "Punto de inflamación: 230 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ INEO FIRST 0W-30 5 Litros.",
+    },
+    {
+        "slug": "aceite-totalenergies-quartz-ineo-first-0w30-1l",
+        "title": "Aceite de Motor TotalEnergies QUARTZ INEO FIRST 0W-30 1 Litro",
+        "short_description": "Aceite sintético 0W-30 de última generación. Envase de 1 litro para reposición.",
+        "image": "/static/img/products/aceite-ineo-first-0w30-1l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "Ahorro de combustible: Ofrece una mejora del 2,61% en eficiencia energética, según la prueba oficial M111 FE. Arranques en frío más fáciles: Gracias a su grado 0W-30 y aditivos especiales, facilita el encendido del motor incluso en temperaturas extremas, con validaciones realizadas hasta -40 °C. Protección para sistemas de control de emisiones: Optimiza el funcionamiento de catalizadores de tres vías y filtros de partículas, evitando obstrucciones por hollín o lodos. Además, reduce emisiones de NOx, HC y CO. Protección y limpieza del motor: Brinda una defensa superior contra el desgaste y la obstrucción desde el primer arranque, manteniendo el motor limpio y eficiente.",
+        "recommendations": [
+            "Consultar el manual de mantenimiento del vehículo antes de utilizar el producto.",
+            "Realizar los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Proteger el producto de la luz solar directa, el frío extremo y las fluctuaciones térmicas.",
+            "Evitar que los envases se expongan a la intemperie. En caso necesario, colocarlos en posición horizontal para prevenir contaminación y proteger la etiqueta.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 0W-30",
+            "Viscosidad cinemática a 40 °C: 50.34 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 9.9 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 844 kg/m³ (ASTM D1298)",
+            "Índice de viscosidad: 187 (ASTM D2270)",
+            "Punto de escurrimiento: -42 °C (ASTM D97)",
+            "Punto de inflamación: 230 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ INEO FIRST 0W-30 1 Litro.",
+    },
+    {
+        "slug": "aceite-totalenergies-quartz-5000-15w40-1l",
+        "title": "Aceite de Motor TotalEnergies QUARTZ 5000 SN 15W-40 1 Litro",
+        "short_description": "Aceite mineral 15W-40 multiuso para motores gasolina. Alto rendimiento y protección confiable.",
+        "image": "/static/img/products/aceite-quartz-5000-15w40-1l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "Norma API SM: Cumple con los estándares de calidad exigidos, garantizando una lubricación óptima y protección efectiva del motor. Multigrado de alto rendimiento: Forma una película lubricante resistente que asegura una excelente lubricación desde el arranque, gracias a su fluidez en frío y estabilidad frente a altas temperaturas. Capacidad detergente y dispersante: Evita la formación de depósitos, manteniendo los residuos de combustión suspendidos y asegurando la estanqueidad de la cámara de combustión. Esto permite conservar la potencia máxima del motor durante toda su vida útil. Protección antidesgaste: Prolonga la vida útil de las piezas móviles del motor, reduciendo el desgaste por fricción. Aditivos de alto desempeño: Ofrece propiedades antioxidantes, antiespumantes, anticorrosivas y antiherrumbre, que mejoran la durabilidad del lubricante. Compatibilidad total: Es perfectamente compatible con juntas y retenes, cumpliendo con las exigencias más estrictas de los fabricantes de automóviles.",
+        "recommendations": [
+            "Consultar el manual de mantenimiento del vehículo antes de utilizar el producto.",
+            "Realizar los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Proteger el producto de la luz solar directa, el frío extremo y las fluctuaciones térmicas.",
+            "Evitar que los envases se expongan a la intemperie para prevenir contaminación y daños en el etiquetado.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 15W-40",
+            "Viscosidad cinemática a 40 °C: 110 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 14.3 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 888 kg/m³ (ASTM D1298)",
+            "Índice de viscosidad: 140 (ASTM D2270)",
+            "Punto de goteo: -36 °C (ASTM D97)",
+            "Punto de inflamación: 234 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ 5000 SN 15W-40 1 Litro.",
+    },
+    {
+        "slug": "aceite-totalenergies-quartz-5000-20w50-4l",
+        "title": "Aceite de Motor TotalEnergies QUARTZ 5000 SN 20W-50 4 Litros",
+        "short_description": "Aceite mineral 20W-50 para motores con alto kilometraje. Protección robusta en envase de 4 litros.",
+        "image": "/static/img/products/aceite-quartz-5000-20w50-4l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "Norma API SN: Cumple con los estándares más exigentes, garantizando una lubricación perfecta y una protección confiable del motor. Multigrado de alto rendimiento: Forma una película lubricante resistente que asegura una excelente lubricación desde el arranque, gracias a su fluidez en frío y estabilidad frente a altas temperaturas. Capacidad detergente y dispersante: Evita la formación de depósitos, manteniendo los residuos de combustión suspendidos y asegurando la estanqueidad de la cámara. Protección antidesgaste: Prolonga la vida útil de las piezas móviles del motor. Compatibilidad total: Es perfectamente compatible con juntas y retenes.",
+        "recommendations": [
+            "Consultar la guía de mantenimiento del vehículo antes de utilizar el producto.",
+            "Realizar los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Proteger el producto de la luz solar directa, el frío extremo y las fluctuaciones térmicas.",
+            "Evitar que los envases se expongan a la intemperie.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 20W-50",
+            "Viscosidad cinemática a 40 °C: 156.8 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 17.85 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 883.3 kg/m³ (ASTM D1298)",
+            "Índice de viscosidad: 126 (ASTM D2270)",
+            "Punto de fluidez: -30 °C (ASTM D97)",
+            "Punto de inflamación: 248 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ 5000 SN 20W-50 4 Litros.",
+    },
+    {
+        "slug": "aceite-super-leichtlauf-10w40-4l",
+        "title": "Aceite de Motor Super Leichtlauf 10W-40 4 Litros",
+        "short_description": "Aceite semi-sintético 10W-40 de alto rendimiento para motores gasolina y diésel.",
+        "image": "/static/img/products/aceite-super-leichtlauf-10w40-4l.webp",
+        "category": "Aceite de Motor",
+        "brand": "Liqui Moly",
+        "description": "Aceite de motor antifrición con tecnología de síntesis (hidrocraqueado), diseñado para satisfacer las elevadas exigencias de los potentes motores modernos de gasolina y diésel. Este aceite ahorra combustible, ofrece una protección óptima contra el desgaste y tiene un efecto positivo en los materiales de sellado, mejorando la estanqueidad del motor. Por esta razón, es una opción excelente para el uso durante todo el año en vehículos con kilometrajes superiores a 100.000 km. Regenera y conserva las juntas del motor. Proporciona una limpieza sobresaliente del motor. Ahorra combustible y reduce emisiones. Funcionamiento suave y silencioso. Rápida lubricación en arranques en frío. Probado y seguro para motores con turbocompresor y catalizador. Miscible con todos los aceites de motor convencionales.",
+        "recommendations": [
+            "Consultar el manual del vehículo antes de utilizar el producto.",
+            "Realizar los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Proteger de la luz solar directa y fluctuaciones térmicas.",
+        ],
+        "features": [
+            "Clase SAE: 10W-40 (SAE J300)",
+            "Densidad a 15 °C: 0,870 g/cm³ (DIN 51757)",
+            "Viscosidad a 40 °C: 97,0 mm²/s (ASTM D7042)",
+            "Viscosidad a 100 °C: 14,5 mm²/s (ASTM D7042)",
+            "Índice de viscosidad: 155 (DIN ISO 2909)",
+            "Punto de combustión: 230 °C (DIN ISO 2592)",
+            "Punto de fluidez: -36 °C (DIN ISO 3016)",
+            "Índice de base total: 11,0 mg KOH/g (DIN ISO 3771)",
+            "Cenizas de sulfato: 1,0 – 1,6 g/100g (DIN 51575)",
+            "Homologaciones: ACEA A3/B4, API SP, MB-Approval 229.3, VW 501 01 / 505 00",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite Super Leichtlauf 10W-40 4 Litros.",
+    },
+    {
+        "slug": "aceite-totalenergies-quartz-7000-diesel-10w40-4l",
+        "title": "Aceite de Motor Diesel TotalEnergies QUARTZ 7000 10W-40 4 Litros",
+        "short_description": "Aceite semi-sintético 10W-40 especialmente formulado para motores diésel de alto desempeño.",
+        "image": "/static/img/products/aceite-quartz-7000-diesel-10w40-4l.webp",
+        "category": "Aceite de Motor",
+        "brand": "TotalEnergies",
+        "description": "Resistencia a la oxidación: Su fórmula con bases y aditivos seleccionados ofrece una excepcional protección contra la oxidación, lo que prolonga la vida útil del aceite y del motor. Limpieza eficiente: Asegura una correcta limpieza del motor al reducir la acumulación de partículas, gracias a su alto poder dispersante. Protección prolongada: Protege a largo plazo los componentes sensibles del motor —como la distribución, los aros, los pistones y las camisas— minimizando el desgaste y aumentando la durabilidad del sistema.",
+        "recommendations": [
+            "Consultar siempre la guía de mantenimiento del vehículo antes de utilizar el producto.",
+            "Realizar los cambios de aceite según las recomendaciones del fabricante.",
+            "No almacenar a temperaturas superiores a 60 °C.",
+            "Mantener alejado de la luz solar directa, el frío extremo y las fluctuaciones térmicas.",
+            "Evitar que el embalaje se exponga a la intemperie. Si no es posible, colocar los tambores en posición horizontal para prevenir la contaminación por agua y proteger la etiqueta del producto.",
+        ],
+        "features": [
+            "Grado de viscosidad: SAE J300 10W-40",
+            "Viscosidad cinemática a 40 °C: 96.8 mm²/s (ASTM D445)",
+            "Viscosidad cinemática a 100 °C: 14.81 mm²/s (ASTM D445)",
+            "Densidad a 15 °C: 873.6 kg/m³ (ASTM D1298)",
+            "Índice de viscosidad: 160 (ASTM D2270)",
+            "Punto de fluidez: -24 °C (ASTM D97)",
+            "Punto de inflamación: 232 °C (ASTM D92)",
+        ],
+        "whatsapp_message": "Hola, quiero consultar por el Aceite TotalEnergies QUARTZ 7000 DIESEL 10W-40 4 Litros.",
+    },
+]
+
 
 DEFAULT_SITE_CONTENT = {
     "hero": {
@@ -248,9 +469,10 @@ DEFAULT_SITE_CONTENT = {
             "title": "Atención multimarca para autos, SUV y vehículos de trabajo.",
         },
         "parts": {
-            "eyebrow": "Repuestos",
-            "title": "Consulta repuestos esenciales con contacto directo y respuesta rápida.",
+            "eyebrow": "Repuestos / Productos",
+            "title": "Repuestos y productos esenciales para tu vehículo.",
             "description": "Frenos, mantención y suspensión con atención orientada a stock, compatibilidad y soporte técnico.",
+            "cta_label": "Ver todos los repuestos y productos",
         },
         "gallery": {
             "eyebrow": "Galería multimedia",
@@ -262,7 +484,7 @@ DEFAULT_SITE_CONTENT = {
         },
         "map": {
             "eyebrow": "Ubicación y reseñas",
-            "title": "Ubicación visible, presencia local y acceso directo a la ficha pública en Google Maps.",
+            "title": "Visítanos en San Bernardo y conoce las opiniones de nuestros clientes.",
             "summary_rating_label": "Calificación visible en Google Maps:",
             "primary_cta": "Ver ubicación y reseñas",
             "card_aria_label": "Abrir ubicación y reseñas del taller en Google Maps",
@@ -277,29 +499,29 @@ DEFAULT_SITE_CONTENT = {
         {
             "title": "Frenos",
             "description": "Pastillas, discos, kits y sensores para múltiples marcas.",
-            "image": "/static/img/gallery/brakes.jpg",
+            "image": "/static/img/parts/frenos.webp",
             "whatsapp_message": "Hola, quiero consultar por repuestos de frenos.",
         },
         {
             "title": "Mantención",
             "description": "Filtros, lubricantes, bujías y kits de servicio.",
-            "image": "/static/img/gallery/reception.jpg",
+            "image": "/static/img/parts/mantencion.webp",
             "whatsapp_message": "Hola, quiero consultar por repuestos de mantención.",
         },
         {
             "title": "Suspensión",
             "description": "Amortiguadores, cazoletas, terminales y bandejas.",
-            "image": "/static/img/gallery/diagnostic.jpg",
+            "image": "/static/img/parts/suspencion.webp",
             "whatsapp_message": "Hola, quiero consultar por repuestos de suspensión.",
         },
     ],
     "gallery": [
-        {"title": "Diagnóstico electrónico", "image": "/static/img/gallery/diagnostic.jpg"},
-        {"title": "Mantención general", "image": "/static/img/hero.jpg"},
-        {"title": "Revisión de frenos", "image": "/static/img/gallery/brakes.jpg"},
-        {"title": "Recepción y entrega", "image": "/static/img/gallery/reception.jpg"},
-        {"title": "Asesoría técnica", "image": "/static/img/services/services-hero.jpg"},
-        {"title": "Atención de flotas", "image": "/static/img/services/fleet-service.jpg"},
+        {"title": "Diagnóstico electrónico", "image": "/static/img/gallery/diagnostic.webp"},
+        {"title": "Mantención general", "image": "/static/img/hero.webp"},
+        {"title": "Revisión de frenos", "image": "/static/img/gallery/brakes.webp"},
+        {"title": "Recepción y entrega", "image": "/static/img/gallery/reception.webp"},
+        {"title": "Asesoría técnica", "image": "/static/img/services/services-hero.webp"},
+        {"title": "Atención de flotas", "image": "/static/img/services/fleet-service.webp"},
     ],
     "brands": [
         {"name": "Hyundai", "image": "/static/img/brands/hyundai.svg"},
@@ -334,7 +556,7 @@ DEFAULT_SITE_CONTENT = {
     "video": {
         "title": "Conoce cómo trabajamos en el taller",
         "description": "Una sección de video ayuda mucho a transmitir orden, limpieza, equipamiento y confianza antes de que el cliente escriba.",
-        "poster": "/static/img/hero.jpg",
+        "poster": "/static/img/hero.webp",
         "label": "Espacio listo para video del taller",
     },
     "services_page": {
@@ -343,8 +565,8 @@ DEFAULT_SITE_CONTENT = {
         "description": "Soluciones técnicas para vehículos particulares, SUV y flotas, con enfoque en seguridad, rendimiento y continuidad operativa.",
     },
     "parts_page": {
-        "eyebrow": "Repuestos",
-        "title": "Venta asistida de repuestos con respuesta rápida por WhatsApp.",
+        "eyebrow": "Repuestos / Productos",
+        "title": "Venta asistida de repuestos y productos con respuesta rápida por WhatsApp.",
         "description": "La sección está preparada para evolucionar más adelante hacia un inventario o ecommerce sin rehacer la vista.",
     },
     "about_page": {
@@ -365,7 +587,7 @@ DEFAULT_SITE_CONTENT = {
             "Seguimiento ordenado para clientes particulares y empresas",
             "Soporte orientado a continuidad operativa de flotas",
         ],
-        "team_image": "/static/img/about/team-pablete.png",
+        "team_image": "/static/img/about/team-pablete.webp",
         "team_alt": "Equipo técnico de Pablete en taller mecánico",
         "team_caption": "Equipo técnico preparado para atención multimarca y soporte operativo.",
         "capabilities": {
@@ -500,6 +722,7 @@ class BaseConfig:
     PAGE_META = _get_structured_env("PAGE_META_JSON", "PAGE_META_FILE", DEFAULT_PAGE_META)
     SITE_COPY = _get_structured_env("SITE_COPY_JSON", "SITE_COPY_FILE", DEFAULT_SITE_COPY)
     SERVICE_CATALOG = _get_structured_env("SERVICE_CATALOG_JSON", "SERVICE_CATALOG_FILE", DEFAULT_SERVICE_CATALOG)
+    PRODUCT_CATALOG = _get_structured_env("PRODUCT_CATALOG_JSON", "PRODUCT_CATALOG_FILE", DEFAULT_PRODUCT_CATALOG)
     SITE_CONTENT = _get_structured_env("SITE_CONTENT_JSON", "SITE_CONTENT_FILE", DEFAULT_SITE_CONTENT)
 
 

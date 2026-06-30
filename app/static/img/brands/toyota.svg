@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64" fill="none">
-  <rect width="240" height="64" rx="16" fill="white"/>
-  <ellipse cx="45" cy="32" rx="24" ry="16" stroke="#0F172A" stroke-width="3"/>
-  <ellipse cx="45" cy="32" rx="8" ry="16" stroke="#0F172A" stroke-width="3"/>
-  <ellipse cx="45" cy="32" rx="16" ry="8" stroke="#0F172A" stroke-width="3"/>
-  <text x="84" y="39" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">TOYOTA</text>
-</svg>

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <main class="page-main">
+    <section class="section">
+      <div class="container">
+        <div class="product-detail-layout">
+          <div class="product-detail-image">
+            <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
+          </div>
+          <div class="product-detail-info">
+            <span class="product-detail-brand">{{ product.brand }}</span>
+            <h1 class="product-detail-title">{{ product.title }}</h1>
+            <span class="product-detail-category">{{ product.category }}</span>
+            <p class="product-detail-short">{{ product.short_description }}</p>
+
+            <div class="product-detail-actions">
+              <a
+                class="button button-primary"
+                href="https://wa.me/{{ content.contact.whatsapp_number }}?text={{ product.whatsapp_message | urlencode }}"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Consultar disponibilidad
+              </a>
+              <a class="button button-secondary-light" href="{{ url_for('site.products') }}">
+                ← Volver a productos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="product-description-card">
+          <h2>Descripción</h2>
+          <p>{{ product.description }}</p>
+
+          {% if product.recommendations %}
+            <h3>Recomendaciones de uso</h3>
+            <ul class="product-features-list">
+              {% for rec in product.recommendations %}
+                <li>{{ rec }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if product.features %}
+            <h3>Características técnicas</h3>
+            <ul class="product-features-list">
+              {% for feature in product.features %}
+                <li>{{ feature }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    {% if related_products %}
+      <section class="section">
+        <div class="container">
+          <div class="section-heading section-heading-compact">
+            <h2>Productos relacionados</h2>
+          </div>
+          <div class="products-grid products-grid-related">
+            {% for rp in related_products %}
+              <article class="product-card">
+                <a href="{{ url_for('site.product_detail', slug=rp.slug) }}" class="product-card-link">
+                  <div class="product-card-image">
+                    <img src="{{ rp.image }}" alt="{{ rp.title }}" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="product-card-body">
+                    <span class="product-card-category">{{ rp.category }}</span>
+                    <h3>{{ rp.title }}</h3>
+                    <p>{{ rp.short_description }}</p>
+                    <span class="product-card-cta">Ver producto</span>
+                  </div>
+                </a>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  </main>
+{% endblock %}
