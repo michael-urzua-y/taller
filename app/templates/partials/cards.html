@@ -1,13 +1,15 @@
 {% macro service_cards(services, site_copy) -%}
-  <div class="cards-grid">
+  <div class="cards-grid services-cards-grid">
     {% for service in services %}
-      <article class="service-card">
+      <article class="service-card service-card-premium" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.06) }}s">
         <img src="{{ service.image }}" alt="{{ service.title }}" loading="lazy" decoding="async" />
-        <h3>{{ service.title }}</h3>
-        <p>{{ service.description }}</p>
-        <a class="service-link" href="{{ url_for('site.service_detail', slug=service.slug) }}">
-          {{ site_copy.service_link_label }}
-        </a>
+        <div class="service-card-copy">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <a class="service-link" href="{{ url_for('site.service_detail', slug=service.slug) }}">
+            {{ site_copy.service_link_label }}
+          </a>
+        </div>
       </article>
     {% endfor %}
   </div>
@@ -16,7 +18,7 @@
 {% macro service_overview_cards(services) -%}
   <div class="service-overview-grid">
     {% for service in services %}
-      <article class="service-overview-card">
+      <article class="service-overview-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.08) }}s">
         <h3>{{ service.title }}</h3>
         <span class="service-overview-icon" aria-hidden="true">
           {% if service.slug == "mantencion-preventiva" %}
@@ -88,10 +90,10 @@
   </div>
 {%- endmacro %}
 
-{% macro part_cards(parts, whatsapp_number, site_copy) -%}
+{% macro part_cards(parts) -%}
   <div class="parts-grid">
     {% for part in parts %}
-      <article class="part-card">
+      <article class="part-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.08) }}s">
         <img src="{{ part.image }}" alt="{{ part.title }}" loading="lazy" decoding="async" />
         <div class="part-copy">
           <h3>{{ part.title }}</h3>

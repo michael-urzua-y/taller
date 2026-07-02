@@ -175,6 +175,62 @@ button {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.js [data-reveal] {
+  --reveal-delay: 0s;
+  --reveal-distance: 12px;
+}
+
+.js [data-reveal].reveal-ready {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0) scale(0.996);
+  transition:
+    opacity 0.98s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.98s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay);
+  will-change: opacity, transform;
+}
+
+.js [data-reveal="left"].reveal-ready {
+  transform: translate3d(calc(var(--reveal-distance) * -1.1), 0, 0) scale(0.996);
+}
+
+.js [data-reveal="right"].reveal-ready {
+  transform: translate3d(calc(var(--reveal-distance) * 1.1), 0, 0) scale(0.996);
+}
+
+.js [data-reveal="zoom"].reveal-ready {
+  transform: translate3d(0, 10px, 0) scale(0.985);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.js .service-overview-card.reveal-ready,
+.js .part-card.reveal-ready,
+.js .trust-grid > div.reveal-ready,
+.js .map-review-teaser.reveal-ready {
+  transition-duration: 0.92s;
+}
+
+.js .media-carousel-shell.reveal-ready,
+.js .brands-panel.reveal-ready,
+.js .map-reviews-summary.reveal-ready,
+.js .map-preview-card.reveal-ready {
+  transition-duration: 1.04s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal].reveal-ready,
+  .js [data-reveal],
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .hero {
   position: relative;
   min-height: 88vh;
@@ -745,11 +801,30 @@ button {
   scroll-behavior: smooth;
   padding-bottom: 0.35rem;
   scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-x;
+  user-select: none;
 }
 
 .media-carousel-track::-webkit-scrollbar {
   display: none;
 }
+
+.media-carousel-track.is-pointer-down {
+  cursor: grabbing;
+}
+
+.media-carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.media-carousel-track.is-dragging .gallery-button,
+.media-carousel-track.is-dragging .media-video-button {
+  pointer-events: none;
+}
+
 
 .media-carousel-item,
 .media-carousel-item-video {
@@ -1958,5 +2033,192 @@ button {
 
   .product-description-card {
     padding: 1.5rem;
+  }
+}
+
+
+.services-page-shell,
+.products-page-shell,
+.product-related-section {
+  position: relative;
+}
+
+.services-page-heading,
+.products-page-heading {
+  margin-bottom: 2.35rem;
+}
+
+.services-page-heading h2,
+.products-page-heading h2 {
+  max-width: 30ch;
+}
+
+.services-cards-grid {
+  gap: 1.35rem;
+}
+
+.service-card-premium {
+  padding: 0;
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+
+.service-card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 62px rgba(15, 23, 42, 0.18);
+  border-color: rgba(255, 107, 0, 0.14);
+}
+
+.service-card-premium img {
+  width: 100%;
+  margin: 0;
+  border-radius: 18px 18px 0 0;
+  transition: transform 320ms ease;
+}
+
+.service-card-premium:hover img {
+  transform: scale(1.035);
+}
+
+.service-card-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem 1.3rem 1.35rem;
+}
+
+.service-card-copy p {
+  flex: 1;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+
+.service-link {
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.service-link::after,
+.product-card-cta::after {
+  content: "→";
+  transition: transform 200ms ease;
+}
+
+.service-card-premium:hover .service-link::after,
+.product-card:hover .product-card-cta::after {
+  transform: translateX(3px);
+}
+
+.page-hero-products {
+  background:
+    linear-gradient(180deg, rgba(11, 18, 32, 0.98), rgba(11, 18, 32, 0.92)),
+    radial-gradient(circle at top right, rgba(255, 107, 0, 0.16), transparent 26%);
+  color: white;
+}
+
+.products-hero-copy {
+  max-width: 980px;
+}
+
+.products-page-heading p {
+  max-width: 70ch;
+}
+
+.product-card {
+  border-radius: 24px;
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 62px rgba(15, 23, 42, 0.18);
+  border-color: rgba(255, 107, 0, 0.14);
+}
+
+.product-card-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 38%;
+  background: linear-gradient(180deg, transparent, rgba(11, 18, 32, 0.08));
+  pointer-events: none;
+}
+
+.product-card-body {
+  gap: 0.35rem;
+  padding: 1.2rem 1.2rem 1.35rem;
+}
+
+.product-card-category {
+  width: fit-content;
+  min-height: 30px;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid rgba(255, 107, 0, 0.12);
+  display: inline-flex;
+  align-items: center;
+}
+
+.product-card-body h3 {
+  font-size: 1.05rem;
+}
+
+.product-card-body p {
+  margin: 0;
+}
+
+.product-card-cta {
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.product-detail-section {
+  padding-top: 3rem;
+}
+
+.product-detail-image,
+.product-description-card {
+  border-radius: 24px;
+}
+
+.product-detail-image img {
+  transition: transform 360ms ease;
+}
+
+.product-detail-image:hover img {
+  transform: scale(1.03);
+}
+
+.product-detail-info {
+  padding-top: 0.35rem;
+}
+
+.product-detail-title {
+  max-width: 18ch;
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+}
+
+.product-detail-short {
+  max-width: 58ch;
+}
+
+.product-description-card {
+  max-width: 920px;
+}
+
+.product-description-card p,
+.product-features-list {
+  color: var(--text-soft);
+}
+
+@media (max-width: 780px) {
+  .services-page-heading h2,
+  .products-page-heading h2,
+  .product-detail-title {
+    max-width: 100%;
+  }
+
+  .service-card-copy {
+    padding: 1.15rem 1.15rem 1.25rem;
   }
 }

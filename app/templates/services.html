@@ -4,15 +4,21 @@
 {% block body %}
   <main class="page-main">
     <section class="page-hero page-hero-services">
-      <div class="container services-hero-simple">
+      <div class="container services-hero-simple" data-reveal="up">
         <span class="eyebrow">{{ content.services_page.eyebrow }}</span>
         <h1>{{ content.services_page.title }}</h1>
         <p>{{ content.services_page.description }}</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-alt services-page-shell">
       <div class="container">
+        <div class="section-heading section-heading-compact services-page-heading" data-reveal="up">
+          <span class="eyebrow">{{ content.services_page.catalog_eyebrow }}</span>
+          <h2>{{ content.services_page.catalog_title }}</h2>
+          <p>{{ content.services_page.catalog_description }}</p>
+        </div>
+
         {{ service_cards(content.services, content.site_copy) }}
       </div>
     </section>

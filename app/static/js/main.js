@@ -1,3 +1,42 @@
+document.documentElement.classList.add("js");
+
+const revealElements = document.querySelectorAll("[data-reveal]");
+
+function setupRevealAnimations() {
+  if (!revealElements.length) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  revealElements.forEach((element) => element.classList.add("reveal-ready"));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          return;
+        }
+
+        entry.target.classList.remove("is-visible");
+      });
+    },
+    {
+      threshold: 0.14,
+      rootMargin: "0px 0px -6% 0px",
+    },
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+}
+
+setupRevealAnimations();
+
 const galleryButtons = document.querySelectorAll("[data-gallery-image]");
 const galleryModal = document.querySelector("#gallery-modal");
 const galleryModalClose = document.querySelector("#gallery-modal-close");
@@ -68,4 +107,85 @@ function scrollMediaTrack(direction) {
 if (mediaPrev && mediaNext && mediaTrack) {
   mediaPrev.addEventListener("click", () => scrollMediaTrack(-1));
   mediaNext.addEventListener("click", () => scrollMediaTrack(1));
+
+  let isPointerDown = false;
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let activePointerId = null;
+
+  function stopDragging() {
+    isPointerDown = false;
+    activePointerId = null;
+    mediaTrack.classList.remove("is-dragging");
+
+    window.requestAnimationFrame(() => {
+      isDragging = false;
+    });
+  }
+
+  mediaTrack.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button != 0) {
+      return;
+    }
+
+    isPointerDown = true;
+    isDragging = false;
+    activePointerId = event.pointerId;
+    startX = event.clientX;
+    startScrollLeft = mediaTrack.scrollLeft;
+    mediaTrack.classList.add("is-pointer-down");
+    mediaTrack.setPointerCapture(event.pointerId);
+  });
+
+  mediaTrack.addEventListener("pointermove", (event) => {
+    if (!isPointerDown || event.pointerId !== activePointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - startX;
+    if (!isDragging && Math.abs(deltaX) > 6) {
+      isDragging = true;
+      mediaTrack.classList.add("is-dragging");
+      mediaTrack.classList.remove("is-pointer-down");
+    }
+
+    if (!isDragging) {
+      return;
+    }
+
+    mediaTrack.scrollLeft = startScrollLeft - deltaX;
+  });
+
+  mediaTrack.addEventListener("pointerup", (event) => {
+    if (event.pointerId !== activePointerId) {
+      return;
+    }
+
+    mediaTrack.classList.remove("is-pointer-down");
+    stopDragging();
+  });
+
+  mediaTrack.addEventListener("pointercancel", () => {
+    mediaTrack.classList.remove("is-pointer-down");
+    stopDragging();
+  });
+
+  mediaTrack.addEventListener("lostpointercapture", () => {
+    mediaTrack.classList.remove("is-pointer-down");
+    stopDragging();
+  });
+
+  mediaTrack.addEventListener(
+    "click",
+    (event) => {
+      if (!isDragging) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+    },
+    true,
+  );
 }

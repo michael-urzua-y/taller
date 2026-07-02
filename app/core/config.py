@@ -563,11 +563,28 @@ DEFAULT_SITE_CONTENT = {
         "eyebrow": "Servicios",
         "title": "Atención mecánica especializada para diagnóstico, mantención y reparación.",
         "description": "Soluciones técnicas para vehículos particulares, SUV y flotas, con enfoque en seguridad, rendimiento y continuidad operativa.",
+        "catalog_eyebrow": "Cobertura técnica",
+        "catalog_title": "Servicios organizados para cotizar rápido y entender el alcance de cada trabajo.",
+        "catalog_description": "Presentamos mantención, diagnóstico, reparación y soporte operativo con una lectura más clara, visual y comercial.",
     },
     "parts_page": {
         "eyebrow": "Repuestos / Productos",
         "title": "Venta asistida de repuestos y productos con respuesta rápida por WhatsApp.",
         "description": "La sección está preparada para evolucionar más adelante hacia un inventario o ecommerce sin rehacer la vista.",
+        "catalog_eyebrow": "Catálogo asistido",
+        "catalog_title": "Lubricantes y productos seleccionados para mantención, protección y rendimiento del vehículo.",
+        "catalog_description": "Una vitrina más clara para consultar compatibilidad, disponibilidad y orientación técnica antes de comprar.",
+        "product_cta_label": "Ver producto",
+    },
+    "products_detail_page": {
+        "primary_cta_label": "Consultar disponibilidad",
+        "back_label": "Volver a productos",
+        "description_title": "Descripción",
+        "recommendations_title": "Recomendaciones de uso",
+        "features_title": "Características técnicas",
+        "related_eyebrow": "También te puede servir",
+        "related_title": "Productos relacionados para completar la mantención o reposición.",
+        "related_card_cta_label": "Ver producto",
     },
     "about_page": {
         "hero": {

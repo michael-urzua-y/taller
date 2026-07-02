@@ -3,7 +3,7 @@
 {% block body %}
   <main class="page-main">
     <section class="page-hero">
-      <div class="container">
+      <div class="container" data-reveal="up">
         <span class="eyebrow">{{ content.about_page.hero.eyebrow }}</span>
         <h1>{{ content.about_page.hero.title }}</h1>
         <p>{{ content.about_page.hero.description }}</p>
@@ -12,7 +12,7 @@
 
     <section class="section">
       <div class="container split-layout about-layout-main">
-        <div class="about-copy">
+        <div class="about-copy" data-reveal="left">
           <h2>{{ content.about_page.intro_title }}</h2>
           {% for paragraph in content.about_page.intro_paragraphs %}
             <p>{{ paragraph }}</p>
@@ -25,7 +25,7 @@
           </ul>
         </div>
 
-        <figure class="about-team-card">
+        <figure class="about-team-card" data-reveal="right" style="--reveal-delay: 0.08s">
           <img src="{{ content.about_page.team_image }}" alt="{{ content.about_page.team_alt }}" loading="lazy" decoding="async" />
           <figcaption>{{ content.about_page.team_caption }}</figcaption>
         </figure>
@@ -34,14 +34,14 @@
 
     <section class="section section-alt">
       <div class="container">
-        <div class="section-heading section-heading-compact">
+        <div class="section-heading section-heading-compact" data-reveal="up">
           <span class="eyebrow">{{ content.about_page.capabilities.eyebrow }}</span>
           <h2>{{ content.about_page.capabilities.title }}</h2>
         </div>
 
         <div class="about-values-grid">
           {% for card in content.about_page.capabilities.cards %}
-            <article class="about-value-card">
+            <article class="about-value-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.08) }}s">
               <h3>{{ card.title }}</h3>
               <p>{{ card.description }}</p>
             </article>
@@ -52,14 +52,14 @@
 
     <section class="section section-dark">
       <div class="container">
-        <div class="section-heading section-heading-compact section-heading-light about-commitment-heading">
+        <div class="section-heading section-heading-compact section-heading-light about-commitment-heading" data-reveal="up">
           <span class="eyebrow">{{ content.about_page.commitment.eyebrow }}</span>
           <h2>{{ content.about_page.commitment.title }}</h2>
         </div>
 
         <div class="testimonial-grid">
           {% for quote in content.about_page.commitment.quotes %}
-            <blockquote>{{ quote }}</blockquote>
+            <blockquote data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.08) }}s">{{ quote }}</blockquote>
           {% endfor %}
         </div>
       </div>

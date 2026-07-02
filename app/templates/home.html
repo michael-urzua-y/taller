@@ -6,7 +6,7 @@
     <section class="hero" id="inicio">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
-        <div class="hero-copy">
+        <div class="hero-copy" data-reveal="up">
           <span class="eyebrow">{{ content.hero.eyebrow }}</span>
           <h1>{{ content.hero.title }}</h1>
           <p>{{ content.hero.description }}</p>
@@ -29,26 +29,13 @@
             {% endfor %}
           </ul>
         </div>
-
-        <!-- <aside class="hero-panel hero-panel-trust">
-          <div class="hero-mini-grid">
-            <div class="stat-card stat-card-compact">
-              <strong>+12 años</strong>
-              <span>atendiendo vehículos particulares y empresas</span>
-            </div>
-            <div class="stat-card stat-card-compact">
-              <strong>Respuesta rápida</strong>
-              <span>cotizaciones y reservas por WhatsApp</span>
-            </div>
-          </div>
-        </aside> -->
       </div>
     </section>
 
-    <section class="trust-strip">
+    <section class="trust-strip" data-reveal-group>
       <div class="container trust-grid">
         {% for point in content.trust_points %}
-          <div>
+          <div data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.08) }}s">
             <strong>{{ point.title }}</strong>
             <p>{{ point.description }}</p>
           </div>
@@ -58,7 +45,7 @@
 
     <section class="section home-section home-section-services">
       <div class="container">
-        <div class="section-heading section-heading-compact">
+        <div class="section-heading section-heading-compact" data-reveal="up">
           <div>
             <span class="eyebrow">{{ content.home_sections.services.eyebrow }}</span>
             <h2>{{ content.home_sections.services.title }}</h2>
@@ -66,7 +53,7 @@
           </div>
         </div>
         {{ service_overview_cards(content.services) }}
-        <div class="section-bottom-cta">
+        <div class="section-bottom-cta" data-reveal="up" style="--reveal-delay: 0.18s">
           <a class="button button-primary" href="{{ url_for('site.services') }}">
             {{ content.home_sections.services.cta_label }}
           </a>
@@ -76,12 +63,12 @@
 
     <section class="section home-section home-section-brands section-alt-dark">
       <div class="container">
-        <div class="section-heading section-heading-compact">
+        <div class="section-heading section-heading-compact" data-reveal="up">
           <span class="eyebrow">{{ content.home_sections.brands.eyebrow }}</span>
           <h2>{{ content.home_sections.brands.title }}</h2>
         </div>
 
-        <div class="brands-panel">
+        <div class="brands-panel" data-reveal="up" style="--reveal-delay: 0.1s">
           <div class="brands-marquee" aria-label="{{ content.home_sections.brands.aria_label }}">
             <div class="brands-track">
               {% for brand in content.brands + content.brands %}
@@ -97,14 +84,14 @@
 
     <section class="section section-alt">
       <div class="container">
-        <div class="section-heading section-heading-compact">
+        <div class="section-heading section-heading-compact" data-reveal="up">
           <div>
             <span class="eyebrow">{{ content.home_sections.parts.eyebrow }}</span>
             <h2>{{ content.home_sections.parts.title }}</h2>
             <p class="section-description-single">{{ content.home_sections.parts.description }}</p>
           </div>
         </div>
-        {{ part_cards(content.parts, content.contact.whatsapp_number, content.site_copy) }}
+        {{ part_cards(content.parts) }}
         <div class="section-bottom-cta">
           <a class="button button-primary" href="{{ url_for('site.products') }}">
             {{ content.home_sections.parts.cta_label }}
@@ -115,85 +102,27 @@
 
     <section class="section section-alt home-section home-section-gallery">
       <div class="container">
-        <div class="section-heading section-heading-compact media-heading-row">
+        <div class="section-heading section-heading-compact media-heading-row" data-reveal="up">
           <span class="eyebrow">{{ content.home_sections.gallery.eyebrow }}</span>
           <h2>{{ content.home_sections.gallery.title }}</h2>
           <p>{{ content.home_sections.gallery.description }}</p>
         </div>
 
-        <div class="media-carousel-shell">
+        <div class="media-carousel-shell" data-reveal="left" style="--reveal-delay: 0.08s">
           <div class="media-carousel-track" data-media-track>
-            <figure class="gallery-card gallery-card-interactive media-carousel-item media-carousel-item-feature">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ content.gallery[0].image }}"
-                data-gallery-title="{{ content.gallery[0].title }}"
-              >
-                <img src="{{ content.gallery[0].image }}" alt="{{ content.gallery[0].title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ content.gallery[0].title }}</figcaption>
-            </figure>
-
-            <figure class="gallery-card gallery-card-interactive media-carousel-item">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ content.gallery[1].image }}"
-                data-gallery-title="{{ content.gallery[1].title }}"
-              >
-                <img src="{{ content.gallery[1].image }}" alt="{{ content.gallery[1].title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ content.gallery[1].title }}</figcaption>
-            </figure>
-
-            <figure class="gallery-card gallery-card-interactive media-carousel-item">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ content.gallery[2].image }}"
-                data-gallery-title="{{ content.gallery[2].title }}"
-              >
-                <img src="{{ content.gallery[2].image }}" alt="{{ content.gallery[2].title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ content.gallery[2].title }}</figcaption>
-            </figure>
-
-            <figure class="gallery-card gallery-card-interactive media-carousel-item">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ content.gallery[3].image }}"
-                data-gallery-title="{{ content.gallery[3].title }}"
-              >
-                <img src="{{ content.gallery[3].image }}" alt="{{ content.gallery[3].title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ content.gallery[3].title }}</figcaption>
-            </figure>
-
-            <figure class="gallery-card gallery-card-interactive media-carousel-item">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ content.gallery[4].image }}"
-                data-gallery-title="{{ content.gallery[4].title }}"
-              >
-                <img src="{{ content.gallery[4].image }}" alt="{{ content.gallery[4].title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ content.gallery[4].title }}</figcaption>
-            </figure>
-
-            <figure class="gallery-card gallery-card-interactive media-carousel-item">
-              <button
-                class="gallery-button"
-                type="button"
-                data-gallery-image="{{ content.gallery[5].image }}"
-                data-gallery-title="{{ content.gallery[5].title }}"
-              >
-                <img src="{{ content.gallery[5].image }}" alt="{{ content.gallery[5].title }}" loading="lazy" decoding="async" />
-              </button>
-              <figcaption>{{ content.gallery[5].title }}</figcaption>
-            </figure>
+            {% for item in content.gallery %}
+              <figure class="gallery-card gallery-card-interactive media-carousel-item{% if loop.first %} media-carousel-item-feature{% endif %}">
+                <button
+                  class="gallery-button"
+                  type="button"
+                  data-gallery-image="{{ item.image }}"
+                  data-gallery-title="{{ item.title }}"
+                >
+                  <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy" decoding="async" />
+                </button>
+                <figcaption>{{ item.title }}</figcaption>
+              </figure>
+            {% endfor %}
             <article class="media-carousel-item media-carousel-item-video">
               <button
                 class="gallery-button media-video-button"
@@ -212,7 +141,7 @@
           </div>
         </div>
 
-        <div class="media-carousel-actions media-carousel-actions-bottom" aria-label="{{ content.home_sections.gallery.controls_aria_label }}">
+        <div class="media-carousel-actions media-carousel-actions-bottom" data-reveal="up" style="--reveal-delay: 0.16s" aria-label="{{ content.home_sections.gallery.controls_aria_label }}">
           <button class="media-carousel-control" type="button" data-media-prev aria-label="{{ content.home_sections.gallery.prev_aria_label }}">
             <span>←</span>
           </button>
@@ -225,14 +154,14 @@
 
     <section class="section home-section home-section-map">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal="up">
           <span class="eyebrow">{{ content.home_sections.map.eyebrow }}</span>
           <h2>{{ content.home_sections.map.title }}</h2>
           <p>{{ content.google_place.name }} · {{ content.google_place.address }}</p>
         </div>
 
         <div class="map-reviews-shell">
-          <div class="map-reviews-summary">
+          <div class="map-reviews-summary" data-reveal="left" style="--reveal-delay: 0.05s">
             <div class="map-summary-top">
               <span class="map-google-pill">{{ content.home_sections.map.maps_pill_label }}</span>
               <span class="map-rating-pill">{{ content.google_place.rating }} {{ content.home_sections.map.rating_scale }}</span>
@@ -256,6 +185,8 @@
           <div class="map-preview-stack">
             <a
               class="map-preview-card"
+              data-reveal="right"
+              style="--reveal-delay: 0.12s"
               href="{{ content.google_place.maps_url }}"
               target="_blank"
               rel="noreferrer"

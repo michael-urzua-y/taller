@@ -2,13 +2,13 @@
 
 {% block body %}
   <main class="page-main">
-    <section class="section">
+    <section class="section product-detail-section">
       <div class="container">
         <div class="product-detail-layout">
-          <div class="product-detail-image">
+          <div class="product-detail-image" data-reveal="left">
             <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
           </div>
-          <div class="product-detail-info">
+          <div class="product-detail-info" data-reveal="right" style="--reveal-delay: 0.06s">
             <span class="product-detail-brand">{{ product.brand }}</span>
             <h1 class="product-detail-title">{{ product.title }}</h1>
             <span class="product-detail-category">{{ product.category }}</span>
@@ -21,10 +21,10 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                Consultar disponibilidad
+                {{ content.products_detail_page.primary_cta_label }}
               </a>
               <a class="button button-secondary-light" href="{{ url_for('site.products') }}">
-                ← Volver a productos
+                ← {{ content.products_detail_page.back_label }}
               </a>
             </div>
           </div>
@@ -34,12 +34,12 @@
 
     <section class="section section-alt">
       <div class="container">
-        <div class="product-description-card">
-          <h2>Descripción</h2>
+        <div class="product-description-card" data-reveal="up">
+          <h2>{{ content.products_detail_page.description_title }}</h2>
           <p>{{ product.description }}</p>
 
           {% if product.recommendations %}
-            <h3>Recomendaciones de uso</h3>
+            <h3>{{ content.products_detail_page.recommendations_title }}</h3>
             <ul class="product-features-list">
               {% for rec in product.recommendations %}
                 <li>{{ rec }}</li>
@@ -48,7 +48,7 @@
           {% endif %}
 
           {% if product.features %}
-            <h3>Características técnicas</h3>
+            <h3>{{ content.products_detail_page.features_title }}</h3>
             <ul class="product-features-list">
               {% for feature in product.features %}
                 <li>{{ feature }}</li>
@@ -60,14 +60,15 @@
     </section>
 
     {% if related_products %}
-      <section class="section">
+      <section class="section product-related-section">
         <div class="container">
-          <div class="section-heading section-heading-compact">
-            <h2>Productos relacionados</h2>
+          <div class="section-heading section-heading-compact" data-reveal="up">
+            <span class="eyebrow">{{ content.products_detail_page.related_eyebrow }}</span>
+            <h2>{{ content.products_detail_page.related_title }}</h2>
           </div>
           <div class="products-grid products-grid-related">
             {% for rp in related_products %}
-              <article class="product-card">
+              <article class="product-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.08) }}s">
                 <a href="{{ url_for('site.product_detail', slug=rp.slug) }}" class="product-card-link">
                   <div class="product-card-image">
                     <img src="{{ rp.image }}" alt="{{ rp.title }}" loading="lazy" decoding="async" />
@@ -76,7 +77,7 @@
                     <span class="product-card-category">{{ rp.category }}</span>
                     <h3>{{ rp.title }}</h3>
                     <p>{{ rp.short_description }}</p>
-                    <span class="product-card-cta">Ver producto</span>
+                    <span class="product-card-cta">{{ content.products_detail_page.related_card_cta_label }}</span>
                   </div>
                 </a>
               </article>

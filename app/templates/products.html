@@ -2,19 +2,25 @@
 
 {% block body %}
   <main class="page-main">
-    <section class="page-hero">
-      <div class="container">
-        <span class="eyebrow">Productos</span>
-        <h1>Nuestros Productos</h1>
-        <p>Aceites, lubricantes y productos de calidad para el cuidado y mantención de tu vehículo.</p>
+    <section class="page-hero page-hero-products">
+      <div class="container products-hero-copy" data-reveal="up">
+        <span class="eyebrow">{{ content.parts_page.eyebrow }}</span>
+        <h1>{{ content.parts_page.title }}</h1>
+        <p>{{ content.parts_page.description }}</p>
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section section-alt products-page-shell">
       <div class="container">
+        <div class="section-heading section-heading-compact products-page-heading" data-reveal="up">
+          <span class="eyebrow">{{ content.parts_page.catalog_eyebrow }}</span>
+          <h2>{{ content.parts_page.catalog_title }}</h2>
+          <p>{{ content.parts_page.catalog_description }}</p>
+        </div>
+
         <div class="products-grid">
           {% for product in content.products %}
-            <article class="product-card">
+            <article class="product-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.06) }}s">
               <a href="{{ url_for('site.product_detail', slug=product.slug) }}" class="product-card-link">
                 <div class="product-card-image">
                   <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
@@ -23,7 +29,7 @@
                   <span class="product-card-category">{{ product.category }}</span>
                   <h3>{{ product.title }}</h3>
                   <p>{{ product.short_description }}</p>
-                  <span class="product-card-cta">Ver producto</span>
+                  <span class="product-card-cta">{{ content.parts_page.product_cta_label }}</span>
                 </div>
               </a>
             </article>
