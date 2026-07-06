@@ -434,6 +434,9 @@ DEFAULT_SITE_CONTENT = {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Tu vehículo en manos técnicas, rápidas y confiables.",
         "description": "Atención profesional para autos particulares y flotas. Revisamos, cotizamos y coordinamos tu servicio con una experiencia simple y actual.",
+        "intro_logo": "/static/img/branding/intro-logo.png",
+        "intro_logo_alt": "Logo provisional del taller",
+        "intro_description": "Confianza técnica para seguir en ruta.",
         # "highlights": [
         #     "Diagnóstico con escáner",
         #     "Garantía en trabajos seleccionados",
@@ -528,7 +531,13 @@ DEFAULT_SITE_CONTENT = {
         {"name": "Chevrolet", "image": "/static/img/brands/chevrolet.svg"},
         {"name": "Nissan", "image": "/static/img/brands/nissan.svg"},
         {"name": "Peugeot", "image": "/static/img/brands/peugeot.svg"},
+        {"name": "Kia", "image": "/static/img/brands/kia.svg"},
+        {"name": "Toyota", "image": "/static/img/brands/toyota.svg"},
+        {"name": "Opel", "image": "/static/img/brands/opel.svg"},
+        {"name": "Volkswagen", "image": "/static/img/brands/volkswagen.svg"},
     ],
+
+
     "google_place": {
         "name": "Garage MASB",
         "rating": "5.0",

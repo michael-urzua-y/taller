@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="{{ url_for('site.home') }}">
+    <a class="brand" href="{{ url_for('site.home') }}" data-home-link>
       <span class="brand-mark">{{ content.site_copy.brand_mark }}</span>
       <span>
         <strong>{{ site_name }}</strong>
@@ -12,6 +12,7 @@
       {% for item in navigation %}
         <a
           href="{{ url_for(item.endpoint) }}"
+          {% if item.endpoint == "site.home" %}data-home-link{% endif %}
           {% if meta.page_key == item.endpoint.split('.')[-1] %}aria-current="page"{% endif %}
         >
           {{ item.label }}

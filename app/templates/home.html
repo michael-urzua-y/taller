@@ -2,6 +2,16 @@
 {% from "partials/cards.html" import service_overview_cards, part_cards %}
 
 {% block body %}
+  <div class="home-intro" id="home-intro" aria-hidden="true">
+    <div class="home-intro-inner">
+      <div class="home-intro-logo-wrap" aria-hidden="true" style="background-image: url('{{ content.hero.intro_logo }}');"></div>
+      <p class="home-intro-description">{{ content.hero.intro_description }}</p>
+      <div class="home-intro-progress" aria-hidden="true">
+        <span class="home-intro-progress-line"></span>
+      </div>
+    </div>
+  </div>
+
   <main>
     <section class="hero" id="inicio">
       <div class="hero-overlay"></div>
@@ -70,8 +80,8 @@
 
         <div class="brands-panel" data-reveal="up" style="--reveal-delay: 0.1s">
           <div class="brands-marquee" aria-label="{{ content.home_sections.brands.aria_label }}">
-            <div class="brands-track">
-              {% for brand in content.brands + content.brands %}
+            <div class="brands-track brands-showcase-grid">
+              {% for brand in content.brands %}
                 <span class="brand-pill">
                   <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
                 </span>
@@ -82,7 +92,7 @@
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section section-alt home-section home-section-parts">
       <div class="container">
         <div class="section-heading section-heading-compact" data-reveal="up">
           <div>

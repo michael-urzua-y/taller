@@ -1,5 +1,8 @@
 document.documentElement.classList.add("js");
 
+const pageKey = document.body.dataset.pageKey || "";
+const skipHomeIntroKey = "skip-home-intro-once";
+
 const revealElements = document.querySelectorAll("[data-reveal]");
 
 function setupRevealAnimations() {
@@ -36,6 +39,52 @@ function setupRevealAnimations() {
 }
 
 setupRevealAnimations();
+
+function setupHomeIntro() {
+  const intro = document.querySelector("#home-intro");
+  if (!intro) {
+    return;
+  }
+
+  const shouldSkipIntro = window.sessionStorage.getItem(skipHomeIntroKey) === "1";
+  if (shouldSkipIntro) {
+    window.sessionStorage.removeItem(skipHomeIntroKey);
+    intro.remove();
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const introDuration = prefersReducedMotion ? 350 : 2100;
+
+  document.body.classList.add("has-home-intro");
+
+  window.setTimeout(() => {
+    intro.classList.add("is-complete");
+    document.body.classList.remove("has-home-intro");
+
+    window.setTimeout(() => {
+      intro.remove();
+    }, 900);
+  }, introDuration);
+}
+
+function setupHomeNavigationIntroGuard() {
+  const homeLinks = document.querySelectorAll("[data-home-link]");
+  if (!homeLinks.length) {
+    return;
+  }
+
+  homeLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (pageKey !== "home") {
+        window.sessionStorage.setItem(skipHomeIntroKey, "1");
+      }
+    });
+  });
+}
+
+setupHomeNavigationIntroGuard();
+setupHomeIntro();
 
 const galleryButtons = document.querySelectorAll("[data-gallery-image]");
 const galleryModal = document.querySelector("#gallery-modal");

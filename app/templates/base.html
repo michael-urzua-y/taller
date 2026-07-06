@@ -17,7 +17,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
   </head>
-  <body>
+  <body data-page-key="{{ meta.page_key }}">
     <div class="site-wrapper">
     {% include "partials/whatsapp_float.html" %}
     {% include "partials/header.html" %}

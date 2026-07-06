@@ -1,9 +1,18 @@
 <footer class="site-footer">
   <div class="container footer-content">
-    <div>
-      <strong>{{ site_name }}</strong>
-      <p>{{ content.site_copy.footer_tagline }}</p>
+    <div class="footer-brand-block">
+      <a class="footer-brand" href="{{ url_for('site.home') }}">
+        <span class="footer-brand-mark">{{ content.site_copy.brand_mark }}</span>
+        <span class="footer-brand-copy">
+          <strong>{{ site_name }}</strong>
+          <small>{{ content.site_copy.brand_subtitle }}</small>
+        </span>
+      </a>
+      <p class="footer-tagline">{{ content.site_copy.footer_tagline }}</p>
     </div>
-    <p>{{ content.site_copy.footer_credit }}</p>
+
+    <div class="footer-meta">
+      <p>{{ content.site_copy.footer_credit }}</p>
+    </div>
   </div>
 </footer>
