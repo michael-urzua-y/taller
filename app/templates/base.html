@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" />
+    {% if meta.page_key == "home" %}<link rel="preload" as="image" href="{{ content.hero.intro_logo }}" fetchpriority="high" />{% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
   </head>
   <body data-page-key="{{ meta.page_key }}">

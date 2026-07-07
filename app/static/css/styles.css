@@ -84,12 +84,19 @@ body.has-home-intro {
 
 .home-intro-logo-wrap {
   position: relative;
+  display: grid;
+  place-items: center;
   width: min(100%, 620px);
-  height: clamp(150px, 22vw, 250px);
+  min-height: clamp(150px, 22vw, 250px);
   margin-top: 0.2rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+}
+
+.home-intro-logo {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  max-height: clamp(150px, 22vw, 250px);
+  object-fit: contain;
   opacity: 0.36;
   filter: drop-shadow(0 16px 38px rgba(0, 0, 0, 0.22));
   mix-blend-mode: screen;
@@ -1674,7 +1681,11 @@ button {
 
   .home-intro-logo-wrap {
     width: min(100%, 390px);
-    height: 126px;
+    min-height: 126px;
+  }
+
+  .home-intro-logo {
+    max-height: 126px;
     opacity: 0.34;
   }
 

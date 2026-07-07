@@ -40,6 +40,36 @@ function setupRevealAnimations() {
 
 setupRevealAnimations();
 
+function waitForIntroLogo() {
+  const introLogo = document.querySelector(".home-intro-logo");
+  if (!introLogo) {
+    return Promise.resolve();
+  }
+
+  if (introLogo.complete && introLogo.naturalWidth > 0) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    let isResolved = false;
+
+    const finish = () => {
+      if (isResolved) {
+        return;
+      }
+
+      isResolved = true;
+      introLogo.removeEventListener("load", finish);
+      introLogo.removeEventListener("error", finish);
+      resolve();
+    };
+
+    introLogo.addEventListener("load", finish, { once: true });
+    introLogo.addEventListener("error", finish, { once: true });
+    window.setTimeout(finish, 1800);
+  });
+}
+
 function setupHomeIntro() {
   const intro = document.querySelector("#home-intro");
   if (!intro) {
@@ -58,14 +88,16 @@ function setupHomeIntro() {
 
   document.body.classList.add("has-home-intro");
 
-  window.setTimeout(() => {
-    intro.classList.add("is-complete");
-    document.body.classList.remove("has-home-intro");
-
+  waitForIntroLogo().finally(() => {
     window.setTimeout(() => {
-      intro.remove();
-    }, 900);
-  }, introDuration);
+      intro.classList.add("is-complete");
+      document.body.classList.remove("has-home-intro");
+
+      window.setTimeout(() => {
+        intro.remove();
+      }, 900);
+    }, introDuration);
+  });
 }
 
 function setupHomeNavigationIntroGuard() {
