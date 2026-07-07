@@ -5,7 +5,10 @@
   <div class="home-intro" id="home-intro" aria-hidden="true">
     <div class="home-intro-inner">
       <div class="home-intro-logo-wrap" aria-hidden="true">
-        <img class="home-intro-logo" src="{{ content.hero.intro_logo }}" alt="{{ content.hero.intro_logo_alt }}" fetchpriority="high" decoding="sync" loading="eager" />
+        <picture>
+          <source srcset="{{ content.hero.intro_logo }}" type="image/webp" />
+          <img class="home-intro-logo" src="{{ content.hero.intro_logo_fallback }}" alt="{{ content.hero.intro_logo_alt }}" fetchpriority="high" decoding="sync" loading="eager" />
+        </picture>
       </div>
       <p class="home-intro-description">{{ content.hero.intro_description }}</p>
       <div class="home-intro-progress" aria-hidden="true">

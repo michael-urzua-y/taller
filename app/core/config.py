@@ -434,7 +434,8 @@ DEFAULT_SITE_CONTENT = {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Tu vehículo en manos técnicas, rápidas y confiables.",
         "description": "Atención profesional para autos particulares y flotas. Revisamos, cotizamos y coordinamos tu servicio con una experiencia simple y actual.",
-        "intro_logo": "/static/img/branding/intro-logo.png",
+        "intro_logo": "/static/img/branding/intro-logo.webp",
+        "intro_logo_fallback": "/static/img/branding/intro-logo.png",
         "intro_logo_alt": "Logo provisional del taller",
         "intro_description": "Confianza técnica para seguir en ruta.",
         # "highlights": [
