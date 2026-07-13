@@ -18,8 +18,8 @@ DEFAULT_NAVIGATION = [
 
 DEFAULT_PAGE_META = {
     "home": {
-        "title_template": "{site_name} | Taller mecánico moderno",
-        "description_template": "Taller mecánico moderno con navegación rápida, servicios, repuestos y contacto por WhatsApp.",
+        "title_template": "{site_name} | Servicio integral automotriz",
+        "description_template": "Servicio integral automotriz con navegación rápida, servicios, repuestos y contacto por WhatsApp.",
     },
     "services": {
         "title_template": "Servicios | {site_name}",
@@ -48,14 +48,14 @@ DEFAULT_PAGE_META = {
 }
 
 DEFAULT_SITE_COPY = {
-    "brand_mark": "ML",
-    "brand_subtitle": "Taller mecánico",
+    "brand_mark": "HyH",
+    "brand_subtitle": "Servicio integral automotriz",
     "nav_cta_label": "Agenda tu cita",
     "nav_cta_message": "Hola, quiero agendar una revisión.",
     "whatsapp_float_label": "WhatsApp",
     "whatsapp_float_aria_label": "Contactar por WhatsApp",
     "whatsapp_float_message": "Hola, quiero cotizar un servicio para mi vehículo.",
-    "footer_tagline": "Taller mecánico moderno, rápido y confiable.",
+    "footer_tagline": "Servicio integral automotriz, rápido y confiable.",
     "footer_credit": "Desarrollado por MonaySolutions. Todos los derechos reservados.",
     "service_link_label": "Ver más",
     "parts_cta_label": "Consultar stock",
@@ -728,7 +728,7 @@ class BaseConfig:
     SESSION_COOKIE_SAMESITE = _get_env("SESSION_COOKIE_SAMESITE", "Lax")
     SESSION_COOKIE_SECURE = _get_bool_env("SESSION_COOKIE_SECURE", ENV_NAME == "production")
     PREFERRED_URL_SCHEME = _get_env("PREFERRED_URL_SCHEME", "https")
-    SITE_NAME = _get_env("SITE_NAME", "MotorLab")
+    SITE_NAME = _get_env("SITE_NAME", "HyH Spa")
     CONTACT_EMAIL = _get_env("CONTACT_EMAIL", "contacto@motorlab.cl")
     CONTACT_PHONE = _get_env("CONTACT_PHONE", "+56 9 4979 0992")
     WHATSAPP_NUMBER = _get_env("WHATSAPP_NUMBER", "56949790992")

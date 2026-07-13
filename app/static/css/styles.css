@@ -212,14 +212,11 @@ button {
   color: white;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
+.brand-logo {
+  width: 46px;
+  height: 46px;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), #ff9a42);
-  font-weight: 800;
+  object-fit: cover;
 }
 
 .brand small {
@@ -1303,16 +1300,11 @@ button {
   color: white;
 }
 
-.footer-brand-mark {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), #ff9a42);
-  color: white;
-  font-weight: 800;
-  box-shadow: 0 12px 28px rgba(255, 107, 0, 0.22);
+.footer-brand-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .footer-brand-copy {

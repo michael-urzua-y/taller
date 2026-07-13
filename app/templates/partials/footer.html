@@ -2,7 +2,7 @@
   <div class="container footer-content">
     <div class="footer-brand-block">
       <a class="footer-brand" href="{{ url_for('site.home') }}">
-        <span class="footer-brand-mark">{{ content.site_copy.brand_mark }}</span>
+        <img class="footer-brand-logo" src="{{ url_for('static', filename='img/logo-hyh.webp') }}" alt="{{ site_name }}" />
         <span class="footer-brand-copy">
           <strong>{{ site_name }}</strong>
           <small>{{ content.site_copy.brand_subtitle }}</small>
