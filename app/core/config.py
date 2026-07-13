@@ -436,8 +436,8 @@ DEFAULT_SITE_CONTENT = {
         "description": "Atención profesional para autos particulares y flotas. Revisamos, cotizamos y coordinamos tu servicio con una experiencia simple y actual.",
         "intro_logo": "/static/img/branding/intro-logo.webp",
         "intro_logo_fallback": "/static/img/branding/intro-logo.png",
-        "intro_logo_alt": "Logo provisional del taller",
-        "intro_description": "Confianza técnica para seguir en ruta.",
+        "intro_logo_alt": "Servicio Integral Automotriz HyH Spa",
+        "intro_description": "Servicio Integral Automotriz HyH Spa",
         # "highlights": [
         #     "Diagnóstico con escáner",
         #     "Garantía en trabajos seleccionados",
@@ -470,7 +470,8 @@ DEFAULT_SITE_CONTENT = {
         },
         "brands": {
             "eyebrow": "Marcas que trabajamos",
-            "title": "Atención multimarca para autos, SUV y vehículos de trabajo.",
+            "title": "Especialistas Hyundai y Kia con servicio multimarca.",
+            "subtitle": "Servicio técnico integral para múltiples marcas del mercado.",
         },
         "parts": {
             "eyebrow": "Repuestos / Productos",
@@ -488,12 +489,12 @@ DEFAULT_SITE_CONTENT = {
         },
         "map": {
             "eyebrow": "Ubicación y reseñas",
-            "title": "Visítanos en San Bernardo y conoce las opiniones de nuestros clientes.",
+            "title": "Visítanos en Independencia y conoce las opiniones de nuestros clientes.",
             "summary_rating_label": "Calificación visible en Google Maps:",
             "primary_cta": "Ver ubicación y reseñas",
             "card_aria_label": "Abrir ubicación y reseñas del taller en Google Maps",
             "card_badge": "Ver reseñas reales",
-            "preview_meta": "San Bernardo · Taller mecánico",
+            "preview_meta": "Independencia · Servicio automotriz",
             "preview_summary": "Abrir en Google Maps para ver ubicación, reseñas, fotos y cómo llegar.",
             "review_stars": "★★★★★",
             "maps_pill_label": "Google Maps",
@@ -528,23 +529,25 @@ DEFAULT_SITE_CONTENT = {
         {"title": "Atención de flotas", "image": "/static/img/services/fleet-service.webp"},
     ],
     "brands": [
-        {"name": "Hyundai", "image": "/static/img/brands/hyundai.svg"},
         {"name": "Chevrolet", "image": "/static/img/brands/chevrolet.svg"},
         {"name": "Nissan", "image": "/static/img/brands/nissan.svg"},
         {"name": "Peugeot", "image": "/static/img/brands/peugeot.svg"},
-        {"name": "Kia", "image": "/static/img/brands/kia.svg"},
         {"name": "Toyota", "image": "/static/img/brands/toyota.svg"},
         {"name": "Opel", "image": "/static/img/brands/opel.svg"},
         {"name": "Volkswagen", "image": "/static/img/brands/volkswagen.svg"},
     ],
+    "brands_featured": [
+        {"name": "Hyundai", "image": "/static/img/brands/hyundai.svg"},
+        {"name": "Kia", "image": "/static/img/brands/kia.svg"},
+    ],
 
 
     "google_place": {
-        "name": "Garage MASB",
+        "name": "Servicio Automotriz H&H",
         "rating": "5.0",
-        "address": "Aguamarina 1821, San Bernardo, Región Metropolitana",
-        "phone": "+56 9 6489 0613",
-        "maps_url": "https://www.google.com/maps/place/Garage+MASB/@-33.6122605,-70.7407522,14z/data=!4m10!1m2!2m1!1staller+mecanico+san+bernardo!3m6!1s0x9662d9dfbe8b299f:0xd608f74cd28538f9!8m2!3d-33.6122657!4d-70.7026397!15sChx0YWxsZXIgbWVjYW5pY28gc2FuIGJlcm5hcmRvWh4iHHRhbGxlciBtZWNhbmljbyBzYW4gYmVybmFyZG-SAQhtZWNoYW5pY5oBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQycENNMXB0YkVOVE1EQTBaV3BDUlZGdWNIRmxSVVpzWW0xYWVrMUZSUkFC4AEA-gEECAAQIA!16s%2Fg%2F11h6crqlg6?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D",
+        "address": "Tte. Bisson 869, Independencia, Región Metropolitana",
+        "phone": "+56 9 6847 3825",
+        "maps_url": "https://maps.app.goo.gl/fVLYBngv5cNNYY6dA",
     },
     "google_review_cards": [
         {
@@ -604,18 +607,18 @@ DEFAULT_SITE_CONTENT = {
         },
         "intro_title": "Soporte técnico para mantener cada unidad en ruta.",
         "intro_paragraphs": [
-            "En Pablete entendemos que la movilidad y la seguridad del vehículo impactan directamente en la operación diaria de cada cliente. Por eso trabajamos con una atención técnica orientada a reducir tiempos muertos, ordenar diagnósticos y mantener cada unidad en condiciones confiables de funcionamiento.",
+            "En Servicio Automotriz H&H entendemos que la movilidad y la seguridad del vehículo impactan directamente en la operación diaria de cada cliente. Por eso trabajamos con una atención técnica orientada a reducir tiempos muertos, ordenar diagnósticos y mantener cada unidad en condiciones confiables de funcionamiento.",
             "Contamos con infraestructura de taller, experiencia en diagnóstico avanzado y un equipo preparado para intervenir sistemas críticos con criterio, precisión y seguimiento. Desde mantenciones preventivas hasta revisión de frenos, suspensión, transmisión y escáner, abordamos cada servicio con foco en rendimiento, seguridad y continuidad operativa.",
             "Para clientes particulares, empresas y flotas, desarrollamos una atención cercana y organizada, con seguimiento técnico claro, respuesta rápida y una relación de trabajo pensada para dar respaldo real en el día a día.",
         ],
         "check_list": [
-            "Atención multimarca para autos, SUV y vehículos de trabajo",
-            "Diagnóstico técnico con enfoque preventivo y correctivo",
-            "Seguimiento ordenado para clientes particulares y empresas",
-            "Soporte orientado a continuidad operativa de flotas",
+            "Especialistas en Hyundai y Kia con atención multimarca",
+            "Diagnóstico técnico preventivo y correctivo",
+            "Seguimiento ordenado para particulares y empresas",
+            "Continuidad operativa garantizada para flotas",
         ],
-        "team_image": "/static/img/about/team-pablete.webp",
-        "team_alt": "Equipo técnico de Pablete en taller mecánico",
+        "team_image": "/static/img/about/team-hyh.webp",
+        "team_alt": "Equipo técnico de Servicio Automotriz H&H",
         "team_caption": "Equipo técnico preparado para atención multimarca y soporte operativo.",
         "capabilities": {
             "eyebrow": "Capacidades",
@@ -641,7 +644,7 @@ DEFAULT_SITE_CONTENT = {
             "quotes": [
                 "Priorizamos diagnósticos claros, decisiones técnicas bien fundamentadas y una atención que permita avanzar con confianza.",
                 "Entendemos que cada vehículo detenido afecta tiempo, operación y productividad; por eso respondemos con orden y seguimiento.",
-                "Pablete busca convertirse en el soporte técnico que permita a cada cliente enfocarse en su operación mientras el taller resuelve.",
+                "Servicio Automotriz H&H busca convertirse en el soporte técnico que permita a cada cliente enfocarse en su operación mientras el taller resuelve.",
             ],
         },
     },
@@ -729,21 +732,21 @@ class BaseConfig:
     SESSION_COOKIE_SECURE = _get_bool_env("SESSION_COOKIE_SECURE", ENV_NAME == "production")
     PREFERRED_URL_SCHEME = _get_env("PREFERRED_URL_SCHEME", "https")
     SITE_NAME = _get_env("SITE_NAME", "HyH Spa")
-    CONTACT_EMAIL = _get_env("CONTACT_EMAIL", "contacto@motorlab.cl")
-    CONTACT_PHONE = _get_env("CONTACT_PHONE", "+56 9 4979 0992")
-    WHATSAPP_NUMBER = _get_env("WHATSAPP_NUMBER", "56949790992")
+    CONTACT_EMAIL = _get_env("CONTACT_EMAIL", "contacto@hyh-automotriz.cl")
+    CONTACT_PHONE = _get_env("CONTACT_PHONE", "56 9 6847 3825")
+    WHATSAPP_NUMBER = _get_env("WHATSAPP_NUMBER", "+56968473825")
     ADDRESS = _get_env("ADDRESS", "Av. Principal 1234, Santiago")
     BUSINESS_HOURS = _get_env("BUSINESS_HOURS", "Lun-Vie 08:30-18:30 | Sáb 09:00-14:00")
     HOST = _get_env("HOST", "127.0.0.1")
     PORT = _get_int_env("PORT", 5000)
     GOOGLE_PLACES_API_KEY = _get_env("GOOGLE_PLACES_API_KEY")
-    GOOGLE_PLACE_QUERY = _get_env("GOOGLE_PLACE_QUERY", "Garage MASB Aguamarina 1821 San Bernardo")
+    GOOGLE_PLACE_QUERY = _get_env("GOOGLE_PLACE_QUERY", "Servicio Automotriz H&H Tte Bisson 869 Independencia")
     GOOGLE_PLACE_ID = _get_env("GOOGLE_PLACE_ID")
     GOOGLE_PLACE_URL = _get_env(
         "GOOGLE_PLACE_URL",
-        "https://www.google.com/maps/place/Garage+MASB/@-33.6122605,-70.7407522,14z/data=!4m10!1m2!2m1!1staller+mecanico+san+bernardo!3m6!1s0x9662d9dfbe8b299f:0xd608f74cd28538f9!8m2!3d-33.6122657!4d-70.7026397!15sChx0YWxsZXIgbWVjYW5pY28gc2FuIGJlcm5hcmRvWh4iHHRhbGxlciBtZWNhbmljbyBzYW4gYmVybmFyZG-SAQhtZWNoYW5pY5oBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQycENNMXB0YkVOVE1EQTBaV3BDUlZGdWNIRmxSVVpzWW0xYWVrMUZSUkFC4AEA-gEECAAQIA!16s%2Fg%2F11h6crqlg6?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D",
+        "https://maps.app.goo.gl/fVLYBngv5cNNYY6dA",
     )
-    GOOGLE_API_USER_AGENT = _get_env("GOOGLE_API_USER_AGENT", "MotorLab/1.0")
+    GOOGLE_API_USER_AGENT = _get_env("GOOGLE_API_USER_AGENT", "HyH-Automotriz/1.0")
     ALLOWED_ORIGINS = _get_allowed_origins()
     NAVIGATION = _get_structured_env("NAVIGATION_JSON", "NAVIGATION_FILE", DEFAULT_NAVIGATION)
     PAGE_META = _get_structured_env("PAGE_META_JSON", "PAGE_META_FILE", DEFAULT_PAGE_META)

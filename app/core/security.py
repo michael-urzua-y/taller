@@ -31,11 +31,12 @@ def register_response_security(app: Flask) -> None:
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; "
-            "img-src 'self' data:; "
+            "img-src 'self' data: https://*.googleapis.com https://*.gstatic.com; "
             "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; "
             "font-src 'self' https://fonts.gstatic.com; "
             "script-src 'self'; "
             "connect-src 'self'; "
+            "frame-src https://maps.google.com https://www.google.com https://maps.app.goo.gl; "
             "frame-ancestors 'none'; "
             "base-uri 'self'; "
             "form-action 'self';"

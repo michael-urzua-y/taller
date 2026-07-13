@@ -44,7 +44,7 @@ def _fetch_place_details(api_key: str, place_id: str, user_agent: str) -> Option
 def get_google_reviews(config, fallback_place: dict, fallback_cards: list[dict]) -> tuple[dict, list[dict], bool]:
     api_key = config.get("GOOGLE_PLACES_API_KEY", "")
     maps_url = config.get("GOOGLE_PLACE_URL", fallback_place["maps_url"])
-    user_agent = config.get("GOOGLE_API_USER_AGENT", "MotorLab/1.0")
+    user_agent = config.get("GOOGLE_API_USER_AGENT", "HyH-Automotriz/1.0")
 
     if not api_key:
         return fallback_place, fallback_cards, False

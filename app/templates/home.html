@@ -76,22 +76,29 @@
       </div>
     </section>
 
-    <section class="section home-section home-section-brands section-alt-dark">
+    <section class="section home-section home-section-brands">
       <div class="container">
         <div class="section-heading section-heading-compact" data-reveal="up">
           <span class="eyebrow">{{ content.home_sections.brands.eyebrow }}</span>
           <h2>{{ content.home_sections.brands.title }}</h2>
+          <p>{{ content.home_sections.brands.subtitle }}</p>
         </div>
 
-        <div class="brands-panel" data-reveal="up" style="--reveal-delay: 0.1s">
-          <div class="brands-marquee" aria-label="{{ content.home_sections.brands.aria_label }}">
-            <div class="brands-track brands-showcase-grid">
-              {% for brand in content.brands %}
-                <span class="brand-pill">
-                  <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
-                </span>
-              {% endfor %}
-            </div>
+        <div class="brands-layout" data-reveal="up" style="--reveal-delay: 0.1s">
+          <div class="brands-featured">
+            {% for brand in content.brands_featured %}
+              <div class="brand-card brand-card-featured">
+                <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
+                <span class="brand-card-label">Especialistas</span>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="brands-secondary">
+            {% for brand in content.brands %}
+              <div class="brand-card brand-card-secondary">
+                <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -198,38 +205,28 @@
           </div>
 
           <div class="map-preview-stack">
-            <a
-              class="map-preview-card"
-              data-reveal="right"
-              style="--reveal-delay: 0.12s"
-              href="{{ content.google_place.maps_url }}"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="{{ content.home_sections.map.card_aria_label }}"
-            >
-              <div class="map-preview-surface">
-                <span class="map-street map-street-top"></span>
-                <span class="map-street map-street-mid"></span>
-                <span class="map-street map-street-side"></span>
-                <span class="map-block map-block-a"></span>
-                <span class="map-block map-block-b"></span>
-                <span class="map-block map-block-c"></span>
-                <span class="map-block map-block-d"></span>
-                <span class="map-route"></span>
-                <span class="map-pin">
-                  <span class="map-pin-dot"></span>
-                </span>
-                <span class="map-zoom map-zoom-plus">+</span>
-                <span class="map-zoom map-zoom-minus">−</span>
-                <span class="map-place-chip">{{ content.google_place.name }}</span>
-                <span class="map-card-badge">{{ content.home_sections.map.card_badge }}</span>
-                <span class="map-preview-meta">{{ content.home_sections.map.preview_meta }}</span>
-              </div>
-              <div class="map-preview-copy">
-                <strong>{{ content.google_place.name }}</strong>
-                <span>{{ content.home_sections.map.preview_summary }}</span>
-              </div>
-            </a>
+            <div class="map-embed-card">
+              <iframe
+                class="map-embed-iframe"
+                src="https://maps.google.com/maps?q=Servicio+Automotriz+H%26H+Tte+Bisson+869+Independencia+Chile&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación de Servicio Automotriz H&H en Google Maps"
+              ></iframe>
+            </div>
+            <div class="map-embed-info">
+              <strong>{{ content.google_place.name }}</strong>
+              <span>{{ content.google_place.address }}</span>
+              <a
+                class="button button-primary"
+                href="{{ content.google_place.maps_url }}"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {{ content.home_sections.map.primary_cta }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
