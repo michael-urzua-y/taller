@@ -1354,7 +1354,7 @@ button {
 
 .map-reviews-shell {
   display: grid;
-  grid-template-columns: minmax(280px, 0.64fr) minmax(0, 1.36fr);
+  grid-template-columns: minmax(0, 0.64fr) minmax(0, 1.36fr);
   gap: 1.45rem;
   align-items: stretch;
 }
@@ -1434,6 +1434,7 @@ button {
 .map-embed-info {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem 0.25rem;
 }
@@ -1445,6 +1446,7 @@ button {
 .map-embed-info span {
   color: var(--text-soft);
   flex: 1;
+  min-width: 150px;
 }
 
 .map-embed-info .button {
