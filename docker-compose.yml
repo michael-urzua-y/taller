@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    container_name: motorlab-web
+    container_name: hyh-web
     env_file:
       - .env
     ports:

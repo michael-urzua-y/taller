@@ -543,11 +543,11 @@ DEFAULT_SITE_CONTENT = {
 
 
     "google_place": {
-        "name": "Servicio Automotriz H&H",
+        "name": "Servicio Integral Automotriz HyH Spa",
         "rating": "5.0",
         "address": "Tte. Bisson 869, Independencia, Región Metropolitana",
         "phone": "+56 9 6847 3825",
-        "maps_url": "https://maps.app.goo.gl/fVLYBngv5cNNYY6dA",
+        "maps_url": "https://maps.app.goo.gl/qwvGbr6ri1AMkWgG6",
     },
     "google_review_cards": [
         {
@@ -561,7 +561,7 @@ DEFAULT_SITE_CONTENT = {
             "cta": "Abrir ficha",
         },
         {
-            "title": "Presencia local en San Bernardo",
+            "title": "Presencia local en Independencia",
             "summary": "Consulta la ficha pública del negocio, su ubicación y la información visible para clientes en Google Maps.",
             "cta": "Explorar ficha",
         },
@@ -607,7 +607,7 @@ DEFAULT_SITE_CONTENT = {
         },
         "intro_title": "Soporte técnico para mantener cada unidad en ruta.",
         "intro_paragraphs": [
-            "En Servicio Automotriz H&H entendemos que la movilidad y la seguridad del vehículo impactan directamente en la operación diaria de cada cliente. Por eso trabajamos con una atención técnica orientada a reducir tiempos muertos, ordenar diagnósticos y mantener cada unidad en condiciones confiables de funcionamiento.",
+            "En Servicio Integral Automotriz HyH Spa entendemos que la movilidad y la seguridad del vehículo impactan directamente en la operación diaria de cada cliente. Por eso trabajamos con una atención técnica orientada a reducir tiempos muertos, ordenar diagnósticos y mantener cada unidad en condiciones confiables de funcionamiento.",
             "Contamos con infraestructura de taller, experiencia en diagnóstico avanzado y un equipo preparado para intervenir sistemas críticos con criterio, precisión y seguimiento. Desde mantenciones preventivas hasta revisión de frenos, suspensión, transmisión y escáner, abordamos cada servicio con foco en rendimiento, seguridad y continuidad operativa.",
             "Para clientes particulares, empresas y flotas, desarrollamos una atención cercana y organizada, con seguimiento técnico claro, respuesta rápida y una relación de trabajo pensada para dar respaldo real en el día a día.",
         ],
@@ -618,7 +618,7 @@ DEFAULT_SITE_CONTENT = {
             "Continuidad operativa garantizada para flotas",
         ],
         "team_image": "/static/img/about/team-hyh.webp",
-        "team_alt": "Equipo técnico de Servicio Automotriz H&H",
+        "team_alt": "Equipo técnico de Servicio Integral Automotriz HyH Spa",
         "team_caption": "Equipo técnico preparado para atención multimarca y soporte operativo.",
         "capabilities": {
             "eyebrow": "Capacidades",
@@ -644,7 +644,7 @@ DEFAULT_SITE_CONTENT = {
             "quotes": [
                 "Priorizamos diagnósticos claros, decisiones técnicas bien fundamentadas y una atención que permita avanzar con confianza.",
                 "Entendemos que cada vehículo detenido afecta tiempo, operación y productividad; por eso respondemos con orden y seguimiento.",
-                "Servicio Automotriz H&H busca convertirse en el soporte técnico que permita a cada cliente enfocarse en su operación mientras el taller resuelve.",
+                "Servicio Integral Automotriz HyH Spa busca convertirse en el soporte técnico que permita a cada cliente enfocarse en su operación mientras el taller resuelve.",
             ],
         },
     },
@@ -740,11 +740,11 @@ class BaseConfig:
     HOST = _get_env("HOST", "127.0.0.1")
     PORT = _get_int_env("PORT", 5000)
     GOOGLE_PLACES_API_KEY = _get_env("GOOGLE_PLACES_API_KEY")
-    GOOGLE_PLACE_QUERY = _get_env("GOOGLE_PLACE_QUERY", "Servicio Automotriz H&H Tte Bisson 869 Independencia")
+    GOOGLE_PLACE_QUERY = _get_env("GOOGLE_PLACE_QUERY", "Servicio Integral Automotriz HyH Spa Tte Bisson 869 Independencia")
     GOOGLE_PLACE_ID = _get_env("GOOGLE_PLACE_ID")
     GOOGLE_PLACE_URL = _get_env(
         "GOOGLE_PLACE_URL",
-        "https://maps.app.goo.gl/fVLYBngv5cNNYY6dA",
+        "https://maps.app.goo.gl/qwvGbr6ri1AMkWgG6",
     )
     GOOGLE_API_USER_AGENT = _get_env("GOOGLE_API_USER_AGENT", "HyH-Automotriz/1.0")
     ALLOWED_ORIGINS = _get_allowed_origins()
