@@ -21,6 +21,10 @@ def register_response_security(app: Flask) -> None:
             response.headers["Access-Control-Max-Age"] = "600"
             response.headers["Vary"] = "Origin"
 
+        # Cache para archivos estáticos (1 semana)
+        if request.path.startswith("/static/"):
+            response.headers["Cache-Control"] = "public, max-age=604800, immutable"
+
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
