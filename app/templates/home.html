@@ -85,18 +85,11 @@
         </div>
 
         <div class="brands-layout" data-reveal="up" style="--reveal-delay: 0.1s">
-          <div class="brands-featured">
+          <div class="brands-featured brands-featured-only">
             {% for brand in content.brands_featured %}
-              <div class="brand-card brand-card-featured">
+              <div class="brand-card brand-card-featured brand-card-featured-large brand-card-{{ brand.name | lower }}">
                 <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
                 <span class="brand-card-label">Especialistas</span>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="brands-secondary">
-            {% for brand in content.brands %}
-              <div class="brand-card brand-card-secondary">
-                <img src="{{ brand.image }}" alt="{{ brand.name }}" loading="lazy" decoding="async" />
               </div>
             {% endfor %}
           </div>

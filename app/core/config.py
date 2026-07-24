@@ -214,6 +214,81 @@ DEFAULT_SERVICE_CATALOG = [
         ],
         "whatsapp_message": "Hola, les hablo desde el sitio web y quiero solicitar una cotización correspondiente al servicio de atención y mantención de flotas. Quedo atento a su información.",
     },
+    {
+        "slug": "simunizado-pintura",
+        "title": "Simunizado de pintura",
+        "description": "Protección y realce de pintura con limpieza técnica, aplicación de productos especializados y terminación orientada a brillo y conservación.",
+        "image": "/static/img/services/paint-sealant.webp",
+        "hero_title": "Simunizado de pintura para mejorar terminación, protección y presentación exterior del vehículo.",
+        "detail_intro": "El simunizado de pintura ayuda a mantener la carrocería en mejor estado visual y a prolongar el cuidado de la superficie. Trabajamos la terminación con enfoque en presentación, protección y brillo uniforme.",
+        "includes": [
+            "Evaluación general del estado de pintura y terminación exterior",
+            "Limpieza previa y preparación de la superficie",
+            "Aplicación de productos de protección y realce de brillo",
+            "Terminación orientada a mejor presentación y conservación",
+        ],
+        "applies_to": [
+            "Vehículos con pintura opaca o terminación desgastada",
+            "Clientes que buscan mejorar brillo y presencia general",
+            "Autos que requieren protección básica de superficie",
+        ],
+        "common_signs": [
+            "Pérdida de brillo en la pintura",
+            "Superficie con apariencia opaca",
+            "Necesidad de mejorar presentación exterior",
+        ],
+        "whatsapp_message": "Hola, les hablo desde el sitio web y quiero solicitar una cotización correspondiente al servicio de simunizado de pintura para mi vehículo. Quedo atento a su información.",
+    },
+    {
+        "slug": "lavado-tapiz",
+        "title": "Lavado de tapiz",
+        "description": "Limpieza profunda de tapices, asientos y superficies interiores para mejorar higiene, apariencia y sensación de cuidado en cabina.",
+        "image": "/static/img/services/upholstery-cleaning.webp",
+        "hero_title": "Lavado de tapiz orientado a limpieza profunda, higiene y mejor presentación interior.",
+        "detail_intro": "El lavado de tapiz permite recuperar limpieza, olor y presencia del interior del vehículo. Realizamos un trabajo pensado para mejorar la experiencia en cabina y mantener el interior en mejores condiciones.",
+        "includes": [
+            "Inspección inicial de tapices, asientos y superficies interiores",
+            "Limpieza profunda de zonas textiles y puntos de mayor uso",
+            "Tratamiento enfocado en higiene y mejor presentación",
+            "Terminación general con enfoque en orden y cuidado interior",
+        ],
+        "applies_to": [
+            "Vehículos con manchas o suciedad acumulada en cabina",
+            "Clientes que buscan mejorar higiene interior",
+            "Autos de uso diario o comercial que requieren renovación visual",
+        ],
+        "common_signs": [
+            "Tapices con suciedad visible",
+            "Olores persistentes en el interior",
+            "Desgaste visual de la cabina por uso continuo",
+        ],
+        "whatsapp_message": "Hola, les hablo desde el sitio web y quiero solicitar una cotización correspondiente al servicio de lavado de tapiz para mi vehículo. Quedo atento a su información.",
+    },
+    {
+        "slug": "desabolladura-pintura",
+        "title": "Desabolladura y pintura",
+        "description": "Corrección de daños en carrocería, reparación estética y trabajos de pintura para recuperar presentación y terminación exterior.",
+        "image": "/static/img/services/dent-paint-repair.webp",
+        "hero_title": "Desabolladura y pintura para recuperar presentación, alineación visual y terminación de carrocería.",
+        "detail_intro": "Los trabajos de desabolladura y pintura permiten corregir daños visibles en la carrocería y devolver una mejor terminación exterior al vehículo. Evaluamos el alcance del daño para definir la intervención adecuada.",
+        "includes": [
+            "Inspección visual de golpes, abolladuras y daños de superficie",
+            "Evaluación del alcance de reparación en carrocería",
+            "Preparación y terminación de zonas intervenidas",
+            "Trabajo de pintura orientado a una presentación uniforme",
+        ],
+        "applies_to": [
+            "Vehículos con golpes menores o daños estéticos visibles",
+            "Clientes que buscan recuperar presentación exterior",
+            "Autos que requieren reparación localizada de carrocería",
+        ],
+        "common_signs": [
+            "Abolladuras visibles en la carrocería",
+            "Rayas o zonas con pintura dañada",
+            "Necesidad de reparación estética exterior",
+        ],
+        "whatsapp_message": "Hola, les hablo desde el sitio web y quiero solicitar una cotización correspondiente al servicio de desabolladura y pintura para mi vehículo. Quedo atento a su información.",
+    },
 ]
 
 DEFAULT_PRODUCT_CATALOG = [
@@ -432,8 +507,8 @@ DEFAULT_PRODUCT_CATALOG = [
 DEFAULT_SITE_CONTENT = {
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
-        "title": "Tu vehículo en manos técnicas, rápidas y confiables.",
-        "description": "Atención profesional para autos particulares y flotas. Revisamos, cotizamos y coordinamos tu servicio con una experiencia simple y actual.",
+        "title": "Somos un servicio especialista en Hyundai y Kia.",
+        "description": "Atención profesional con técnicos certificados por la marca. Revisamos, cotizamos y coordinamos tu servicio con una experiencia simple y actual.",
         "intro_logo": "/static/img/branding/intro-logo.webp",
         "intro_logo_fallback": "/static/img/branding/intro-logo.png",
         "intro_logo_alt": "Servicio Integral Automotriz HyH Spa",
@@ -454,24 +529,24 @@ DEFAULT_SITE_CONTENT = {
         },
         {
             "title": "Repuestos confiables",
-            "description": "Trabajamos con marcas reconocidas y alternativas según presupuesto.",
+            "description": "Utilizamos repuestos originales y alternativos de excelente calidad para garantizar un servicio confiable.",
         },
         {
             "title": "Entrega ordenada",
-            "description": "Coordinamos tiempos, avances y retiro sin fricción.",
+            "description": "Trabajamos con reserva de horas para optimizar nuestros tiempos de atención. Coordinamos los tiempos e informamos avances para una entrega segura.",
         },
     ],
     "home_sections": {
         "services": {
             "eyebrow": "Servicios",
             "title": "Servicios mecánicos para diagnóstico, mantención y reparación automotriz.",
-            "description": "Cobertura técnica en mantención preventiva, frenos, suspensión, escáner, transmisión, climatización y atención a flotas.",
+            "description": "Cobertura técnica en mantención preventiva, frenos, suspensión, diagnóstico con escáner, transmisión, climatización, atención de flotas, simunizado de pintura, lavado de tapiz, desabolladura y pintura para Hyundai, Kia y otras marcas.",
             "cta_label": "Ver todos los servicios",
         },
         "brands": {
             "eyebrow": "Marcas que trabajamos",
-            "title": "Especialistas Hyundai y Kia con servicio multimarca.",
-            "subtitle": "Servicio técnico integral para múltiples marcas del mercado.",
+            "title": "Especialistas Hyundai y Kia. ",
+            "subtitle": "Consulta por otras marcas.",
         },
         "parts": {
             "eyebrow": "Repuestos / Productos",
@@ -503,7 +578,7 @@ DEFAULT_SITE_CONTENT = {
     "parts": [
         {
             "title": "Frenos",
-            "description": "Pastillas, discos, kits y sensores para múltiples marcas.",
+            "description": "Pastillas, discos, kits de embreagues y sensores para múltiples marcas.",
             "image": "/static/img/parts/frenos.webp",
             "whatsapp_message": "Hola, quiero consultar por repuestos de frenos.",
         },
@@ -528,14 +603,7 @@ DEFAULT_SITE_CONTENT = {
         {"title": "Asesoría técnica", "image": "/static/img/services/services-hero.webp"},
         {"title": "Atención de flotas", "image": "/static/img/services/fleet-service.webp"},
     ],
-    "brands": [
-        {"name": "Chevrolet", "image": "/static/img/brands/chevrolet.svg"},
-        {"name": "Nissan", "image": "/static/img/brands/nissan.svg"},
-        {"name": "Peugeot", "image": "/static/img/brands/peugeot.svg"},
-        {"name": "Toyota", "image": "/static/img/brands/toyota.svg"},
-        {"name": "Opel", "image": "/static/img/brands/opel.svg"},
-        {"name": "Volkswagen", "image": "/static/img/brands/volkswagen.svg"},
-    ],
+    "brands": [],
     "brands_featured": [
         {"name": "Hyundai", "image": "/static/img/brands/hyundai.svg"},
         {"name": "Kia", "image": "/static/img/brands/kia.svg"},
