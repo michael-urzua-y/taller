@@ -505,12 +505,13 @@ DEFAULT_PRODUCT_CATALOG = [
 
 
 DEFAULT_SITE_CONTENT = {
+    "asset_version": "20260724-1",
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Somos un servicio especialista en Hyundai y Kia.",
         "description": "Atención profesional con técnicos certificados por la marca. Revisamos, cotizamos y coordinamos tu servicio con una experiencia simple y actual.",
-        "intro_logo": "/static/img/branding/intro-logo.webp",
-        "intro_logo_fallback": "/static/img/branding/intro-logo.png",
+        "intro_logo": "/static/img/branding/intro-logo.webp?v=20260724-1",
+        "intro_logo_fallback": "/static/img/branding/intro-logo.png?v=20260724-1",
         "intro_logo_alt": "Servicio Integral Automotriz HyH Spa",
         "intro_description": "Servicio Integral Automotriz HyH Spa",
         # "highlights": [
@@ -579,13 +580,13 @@ DEFAULT_SITE_CONTENT = {
         {
             "title": "Frenos",
             "description": "Pastillas, discos, kits de embreagues y sensores para múltiples marcas.",
-            "image": "/static/img/parts/frenos.webp",
+            "image": "/static/img/parts/frenos.webp?v=20260724-1",
             "whatsapp_message": "Hola, quiero consultar por repuestos de frenos.",
         },
         {
             "title": "Mantención",
             "description": "Filtros, lubricantes, bujías y kits de servicio.",
-            "image": "/static/img/parts/mantencion.webp",
+            "image": "/static/img/parts/mantencion.webp?v=20260724-1",
             "whatsapp_message": "Hola, quiero consultar por repuestos de mantención.",
         },
         {

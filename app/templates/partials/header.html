@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="{{ url_for('site.home') }}" data-home-link>
-      <img class="brand-logo" src="{{ url_for('static', filename='img/logo-hyh.webp') }}" alt="{{ site_name }}" />
+      <img class="brand-logo" src="{{ url_for('static', filename='img/logo-hyh.webp') }}?v={{ content.asset_version }}" alt="{{ site_name }}" />
       <span class="brand-copy">
         <strong>{{ site_name }}</strong>
         <small>{{ content.site_copy.brand_subtitle }}</small>
