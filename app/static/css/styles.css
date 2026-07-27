@@ -328,14 +328,6 @@ button {
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-.js .service-overview-card.reveal-ready,
-.js .part-card.reveal-ready,
-.js .trust-grid > div.reveal-ready,
-
-.js .media-carousel-shell.reveal-ready,
-.js .brands-panel.reveal-ready,
-.js .map-reviews-summary.reveal-ready,
-
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal].reveal-ready,
   .js [data-reveal],
@@ -348,14 +340,6 @@ button {
 
 .hero {
   position: relative;
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 42%);
-  pointer-events: none;
-}
-
   min-height: 88vh;
   display: grid;
   align-items: center;
@@ -365,6 +349,14 @@ button {
   background-size: cover;
   background-position: center;
   color: white;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 42%);
+  pointer-events: none;
 }
 
 .hero-content {
@@ -1525,17 +1517,21 @@ button {
   .nav {
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0.85rem 0;
+    row-gap: 0.95rem;
+    padding: 1rem 0 1.2rem;
   }
 
   .brand {
-    gap: 0.7rem;
+    width: 100%;
+    justify-content: center;
+    gap: 0.8rem;
+    padding-bottom: 0.2rem;
   }
 
   .brand-logo {
-    width: 108px;
-    height: 108px;
-    margin: 6px 0 -16px;
+    width: 96px;
+    height: 96px;
+    margin: 0;
   }
 
   .brand-copy {
@@ -1547,11 +1543,16 @@ button {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 0.85rem 1.2rem;
+    margin-top: 0.1rem;
   }
 
   .nav-cta {
+    order: 2;
     width: 100%;
+    max-width: 100%;
     text-align: center;
+    margin-top: 0.15rem;
   }
 
   .hero {
@@ -2380,5 +2381,215 @@ button {
   .home-section-map .section-heading h2,
   .home-section-map .section-heading p {
     white-space: nowrap;
+  }
+}
+
+/* ===== Final responsive polish ===== */
+@media (max-width: 780px) {
+  .site-header {
+    position: sticky;
+  }
+
+  .nav {
+    align-items: center;
+    row-gap: 1rem;
+    padding: 1rem 0 1.25rem;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.85rem;
+    padding-bottom: 0.15rem;
+  }
+
+  .brand-logo {
+    width: 92px;
+    height: 92px;
+    margin: 0;
+    flex: none;
+  }
+
+  .brand-copy {
+    display: grid;
+    gap: 0.15rem;
+    padding-top: 0;
+  }
+
+  .brand-copy strong {
+    font-size: 1.05rem;
+    line-height: 1.1;
+  }
+
+  .brand-copy small {
+    font-size: 0.92rem;
+    line-height: 1.25;
+  }
+
+  .nav-cta {
+    order: 2;
+    width: 100%;
+    max-width: 560px;
+    min-height: 52px;
+    margin-top: 0.35rem;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.9rem 1.35rem;
+    margin-top: 0.15rem;
+  }
+
+  .nav-links a {
+    padding: 0.4rem 0.1rem;
+    font-size: 0.98rem;
+    line-height: 1.2;
+  }
+
+  .nav-links a[aria-current="page"]::before {
+    inset: -0.35rem -0.65rem;
+  }
+
+  .hero-content {
+    padding-top: 4.8rem;
+    padding-bottom: 3.8rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.25rem, 12vw, 3.5rem);
+    line-height: 0.96;
+  }
+
+  .hero-copy p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .page-hero {
+    padding-top: 7.4rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.05rem, 10.2vw, 3.1rem);
+    line-height: 1.02;
+  }
+
+  .page-hero p,
+  .products-page-heading p,
+  .services-page-heading p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .products-page-heading {
+    margin-bottom: 1.45rem;
+  }
+
+  .products-page-heading h2 {
+    font-size: clamp(1.85rem, 8.2vw, 2.65rem);
+    line-height: 1.08;
+  }
+
+  .products-category-select-wrap {
+    max-width: 100%;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .products-category-select-label {
+    font-size: 0.98rem;
+    line-height: 1.2;
+  }
+
+  .products-category-select-shell::after {
+    right: 1rem;
+    width: 9px;
+    height: 9px;
+  }
+
+  .products-category-select {
+    min-height: 54px;
+    padding: 0.88rem 2.85rem 0.88rem 0.95rem;
+    border-radius: 16px;
+    font-size: 0.98rem;
+    line-height: 1.2;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  }
+
+  .products-groups {
+    gap: 1.5rem;
+  }
+
+  .products-category-heading {
+    display: grid;
+    gap: 0.4rem;
+    align-items: start;
+    margin-bottom: 0.95rem;
+  }
+
+  .products-category-kicker {
+    margin-bottom: 0.2rem;
+    font-size: 0.75rem;
+  }
+
+  .products-category-heading h3 {
+    font-size: 1.55rem;
+    line-height: 1.08;
+  }
+
+  .products-category-count {
+    font-size: 0.95rem;
+    white-space: normal;
+  }
+
+  .products-grid,
+  .products-grid-related {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .product-card {
+    border-radius: 22px;
+  }
+
+  .product-card-image {
+    min-height: 250px;
+    padding: 1rem;
+  }
+
+  .product-card-body {
+    padding: 1rem 1rem 1.2rem;
+    gap: 0.4rem;
+  }
+
+  .product-card-body h3 {
+    font-size: 1.02rem;
+    line-height: 1.3;
+  }
+
+  .product-card-body p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .product-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .product-detail-image {
+    padding: 1rem;
+  }
+
+  .product-description-card {
+    padding: 1.4rem;
   }
 }
