@@ -18,27 +18,58 @@
           <p>{{ content.parts_page.catalog_description }}</p>
         </div>
 
+        {% set sorted_groups = content.product_groups | sort(attribute='name') %}
+        {% set default_group = (sorted_groups | selectattr('name', 'equalto', 'Aceites') | list | first) or (sorted_groups | first) %}
+
         <div class="products-category-select-wrap" data-reveal="up" style="--reveal-delay: 0.04s">
-          <label class="products-category-select-label" for="products-category-select">Explorar categoría</label>
-          <div class="products-category-select-shell">
-            <select id="products-category-select" class="products-category-select" aria-label="Categorías de productos" data-products-category-select>
-              {% for group in content.product_groups | sort(attribute='name') %}
-                <option value="{{ group.anchor }}" {% if group.name == 'Aceites' %}selected{% endif %}>{{ group.name }} ({{ group.products | length }})</option>
-              {% endfor %}
-            </select>
+          <span class="products-category-select-label" id="products-category-label">Explorar categoría</span>
+          <div class="products-category-dropdown" data-products-category-dropdown>
+            <button
+              type="button"
+              id="products-category-trigger"
+              class="products-category-trigger"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-labelledby="products-category-label products-category-trigger"
+              data-products-category-trigger
+            >
+              <span class="products-category-trigger-text" data-products-category-current>{{ default_group.name }} ({{ default_group.products | length }})</span>
+              <span class="products-category-trigger-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="products-category-menu" data-products-category-menu hidden>
+              <ul class="products-category-options" role="listbox" aria-labelledby="products-category-label" tabindex="-1" data-products-category-options>
+                {% for group in sorted_groups %}
+                  <li>
+                    <button
+                      type="button"
+                      class="products-category-option{% if group.anchor == default_group.anchor %} is-selected{% endif %}"
+                      role="option"
+                      aria-selected="{{ 'true' if group.anchor == default_group.anchor else 'false' }}"
+                      data-products-category-option
+                      data-anchor="{{ group.anchor }}"
+                      data-label="{{ group.name }} ({{ group.products | length }})"
+                    >
+                      <span>{{ group.name }}</span>
+                      <span class="products-category-option-count">{{ group.products | length }}</span>
+                    </button>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
         </div>
 
         <div class="products-groups">
-          {% for group in content.product_groups %}
+          {% for group in sorted_groups %}
             <section
               id="{{ group.anchor }}"
-              class="products-category-section{% if loop.first %} is-active{% endif %}"
+              class="products-category-section{% if group.anchor == default_group.anchor %} is-active{% endif %}"
               data-product-group
               data-group-anchor="{{ group.anchor }}"
               data-reveal="up"
               style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.04) }}s"
-              {% if not loop.first %}hidden{% endif %}
+              {% if group.anchor != default_group.anchor %}hidden{% endif %}
             >
               <div class="products-category-heading">
                 <div>

@@ -119,36 +119,133 @@ setupHomeNavigationIntroGuard();
 setupHomeIntro();
 
 function setupProductsCategorySelect() {
-  const select = document.querySelector('[data-products-category-select]');
-  const groups = document.querySelectorAll('[data-product-group]');
+  const dropdown = document.querySelector('[data-products-category-dropdown]');
+  const trigger = document.querySelector('[data-products-category-trigger]');
+  const current = document.querySelector('[data-products-category-current]');
+  const menu = document.querySelector('[data-products-category-menu]');
+  const optionsList = document.querySelector('[data-products-category-options]');
+  const options = Array.from(document.querySelectorAll('[data-products-category-option]'));
+  const groups = Array.from(document.querySelectorAll('[data-product-group]'));
 
-  if (!select || !groups.length) {
+  if (!dropdown || !trigger || !current || !menu || !options.length || !groups.length) {
     return;
   }
 
-  const setActiveGroup = (anchor) => {
+  let activeAnchor = options.find((option) => option.classList.contains('is-selected'))?.dataset.anchor || groups[0]?.dataset.groupAnchor || '';
+
+  const setExpanded = (expanded) => {
+    trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    dropdown.classList.toggle('is-open', expanded);
+    menu.hidden = !expanded;
+  };
+
+  const setActiveGroup = (anchor, { shouldScroll = false } = {}) => {
+    activeAnchor = anchor;
+
     groups.forEach((group) => {
       const isActive = group.dataset.groupAnchor === anchor;
       group.hidden = !isActive;
       group.classList.toggle('is-active', isActive);
     });
+
+    options.forEach((option) => {
+      const isSelected = option.dataset.anchor === anchor;
+      option.classList.toggle('is-selected', isSelected);
+      option.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      if (isSelected) {
+        current.textContent = option.dataset.label || option.textContent.trim();
+      }
+    });
+
+    if (shouldScroll) {
+      const activeGroup = document.getElementById(anchor);
+      if (activeGroup) {
+        activeGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
-  const initialAnchor = select.value || groups[0]?.dataset.groupAnchor || '';
-  if (initialAnchor) {
-    setActiveGroup(initialAnchor);
-  }
-
-  select.addEventListener('change', () => {
-    const anchor = select.value;
-    if (!anchor) {
-      return;
+  const focusOption = (index) => {
+    const target = options[index];
+    if (target) {
+      target.focus();
     }
+  };
 
-    setActiveGroup(anchor);
-    const activeGroup = document.getElementById(anchor);
-    if (activeGroup) {
-      activeGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setActiveGroup(activeAnchor);
+  setExpanded(false);
+
+  trigger.addEventListener('click', () => {
+    const isOpen = dropdown.classList.contains('is-open');
+    setExpanded(!isOpen);
+    if (!isOpen) {
+      const selectedIndex = Math.max(0, options.findIndex((option) => option.dataset.anchor === activeAnchor));
+      focusOption(selectedIndex);
+    }
+  });
+
+  trigger.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setExpanded(true);
+      const selectedIndex = Math.max(0, options.findIndex((option) => option.dataset.anchor === activeAnchor));
+      focusOption(selectedIndex);
+    }
+  });
+
+  options.forEach((option, index) => {
+    option.addEventListener('click', () => {
+      const anchor = option.dataset.anchor;
+      if (!anchor) {
+        return;
+      }
+      setActiveGroup(anchor, { shouldScroll: true });
+      setExpanded(false);
+      trigger.focus();
+    });
+
+    option.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        focusOption((index + 1) % options.length);
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        focusOption((index - 1 + options.length) % options.length);
+      }
+
+      if (event.key === 'Home') {
+        event.preventDefault();
+        focusOption(0);
+      }
+
+      if (event.key === 'End') {
+        event.preventDefault();
+        focusOption(options.length - 1);
+      }
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setExpanded(false);
+        trigger.focus();
+      }
+
+      if (event.key === 'Tab') {
+        setExpanded(false);
+      }
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) {
+      setExpanded(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setExpanded(false);
     }
   });
 }
