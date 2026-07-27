@@ -6,7 +6,7 @@
       <div class="container">
         <div class="product-detail-layout">
           <div class="product-detail-image" data-reveal="left">
-            <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
+            <img src="{{ product.image }}{{ '&' if '?' in product.image else '?' }}v={{ content.asset_version }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
           </div>
           <div class="product-detail-info" data-reveal="right" style="--reveal-delay: 0.06s">
             <span class="product-detail-brand">{{ product.brand }}</span>
