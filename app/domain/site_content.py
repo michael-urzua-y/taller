@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import re
 from typing import Optional
 
 from flask import current_app
@@ -16,6 +17,31 @@ def get_service_by_slug(slug: str) -> Optional[dict]:
 
 def get_products_data() -> list[dict]:
     return deepcopy(current_app.config["PRODUCT_CATALOG"])
+
+
+def _slugify_label(value: str) -> str:
+    normalized = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return normalized or "categoria"
+
+
+def get_grouped_products_data() -> list[dict]:
+    groups: list[dict] = []
+    grouped_map: dict[str, dict] = {}
+
+    for product in get_products_data():
+        category = product.get("category", "General")
+        group = grouped_map.get(category)
+        if group is None:
+            group = {
+                "name": category,
+                "anchor": _slugify_label(category),
+                "products": [],
+            }
+            grouped_map[category] = group
+            groups.append(group)
+        group["products"].append(product)
+
+    return groups
 
 
 def get_product_by_slug(slug: str) -> Optional[dict]:
@@ -40,4 +66,5 @@ def build_site_content() -> dict:
     }
     content["services"] = get_services_data()
     content["products"] = get_products_data()
+    content["product_groups"] = get_grouped_products_data()
     return content

@@ -18,21 +18,44 @@
           <p>{{ content.parts_page.catalog_description }}</p>
         </div>
 
-        <div class="products-grid">
-          {% for product in content.products %}
-            <article class="product-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.06) }}s">
-              <a href="{{ url_for('site.product_detail', slug=product.slug) }}" class="product-card-link">
-                <div class="product-card-image">
-                  <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
+        <nav class="products-category-nav" aria-label="Categorías de productos" data-reveal="up" style="--reveal-delay: 0.04s">
+          {% for group in content.product_groups %}
+            <a class="products-category-link" href="#{{ group.anchor }}">
+              <span>{{ group.name }}</span>
+              <strong>{{ group.products | length }}</strong>
+            </a>
+          {% endfor %}
+        </nav>
+
+        <div class="products-groups">
+          {% for group in content.product_groups %}
+            <section id="{{ group.anchor }}" class="products-category-section" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.04) }}s">
+              <div class="products-category-heading">
+                <div>
+                  <span class="products-category-kicker">{{ content.parts_page.catalog_eyebrow }}</span>
+                  <h3>{{ group.name }}</h3>
                 </div>
-                <div class="product-card-body">
-                  <span class="product-card-category">{{ product.category }}</span>
-                  <h3>{{ product.title }}</h3>
-                  <p>{{ product.short_description }}</p>
-                  <span class="product-card-cta">{{ content.parts_page.product_cta_label }}</span>
-                </div>
-              </a>
-            </article>
+                <span class="products-category-count">{{ group.products | length }} productos</span>
+              </div>
+
+              <div class="products-grid">
+                {% for product in group.products %}
+                  <article class="product-card" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.05) }}s">
+                    <a href="{{ url_for('site.product_detail', slug=product.slug) }}" class="product-card-link">
+                      <div class="product-card-image">
+                        <img src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="product-card-body">
+                        <span class="product-card-category">{{ product.category }}</span>
+                        <h3>{{ product.title }}</h3>
+                        <p>{{ product.short_description }}</p>
+                        <span class="product-card-cta">{{ content.parts_page.product_cta_label }}</span>
+                      </div>
+                    </a>
+                  </article>
+                {% endfor %}
+              </div>
+            </section>
           {% endfor %}
         </div>
       </div>
