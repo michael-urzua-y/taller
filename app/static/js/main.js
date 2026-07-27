@@ -118,6 +118,43 @@ function setupHomeNavigationIntroGuard() {
 setupHomeNavigationIntroGuard();
 setupHomeIntro();
 
+function setupProductsCategorySelect() {
+  const select = document.querySelector('[data-products-category-select]');
+  const groups = document.querySelectorAll('[data-product-group]');
+
+  if (!select || !groups.length) {
+    return;
+  }
+
+  const setActiveGroup = (anchor) => {
+    groups.forEach((group) => {
+      const isActive = group.dataset.groupAnchor === anchor;
+      group.hidden = !isActive;
+      group.classList.toggle('is-active', isActive);
+    });
+  };
+
+  const initialAnchor = select.value || groups[0]?.dataset.groupAnchor || '';
+  if (initialAnchor) {
+    setActiveGroup(initialAnchor);
+  }
+
+  select.addEventListener('change', () => {
+    const anchor = select.value;
+    if (!anchor) {
+      return;
+    }
+
+    setActiveGroup(anchor);
+    const activeGroup = document.getElementById(anchor);
+    if (activeGroup) {
+      activeGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
+setupProductsCategorySelect();
+
 const galleryButtons = document.querySelectorAll("[data-gallery-image]");
 const galleryModal = document.querySelector("#gallery-modal");
 const galleryModalClose = document.querySelector("#gallery-modal-close");

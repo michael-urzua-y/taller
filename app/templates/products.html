@@ -18,18 +18,28 @@
           <p>{{ content.parts_page.catalog_description }}</p>
         </div>
 
-        <nav class="products-category-nav" aria-label="Categorías de productos" data-reveal="up" style="--reveal-delay: 0.04s">
-          {% for group in content.product_groups %}
-            <a class="products-category-link" href="#{{ group.anchor }}">
-              <span>{{ group.name }}</span>
-              <strong>{{ group.products | length }}</strong>
-            </a>
-          {% endfor %}
-        </nav>
+        <div class="products-category-select-wrap" data-reveal="up" style="--reveal-delay: 0.04s">
+          <label class="products-category-select-label" for="products-category-select">Explorar categoría</label>
+          <div class="products-category-select-shell">
+            <select id="products-category-select" class="products-category-select" aria-label="Categorías de productos" data-products-category-select>
+              {% for group in content.product_groups | sort(attribute='name') %}
+                <option value="{{ group.anchor }}" {% if group.name == 'Aceites' %}selected{% endif %}>{{ group.name }} ({{ group.products | length }})</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
 
         <div class="products-groups">
           {% for group in content.product_groups %}
-            <section id="{{ group.anchor }}" class="products-category-section" data-reveal="up" style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.04) }}s">
+            <section
+              id="{{ group.anchor }}"
+              class="products-category-section{% if loop.first %} is-active{% endif %}"
+              data-product-group
+              data-group-anchor="{{ group.anchor }}"
+              data-reveal="up"
+              style="--reveal-delay: {{ "%.2f"|format(loop.index0 * 0.04) }}s"
+              {% if not loop.first %}hidden{% endif %}
+            >
               <div class="products-category-heading">
                 <div>
                   <span class="products-category-kicker">{{ content.parts_page.catalog_eyebrow }}</span>
