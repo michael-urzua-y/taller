@@ -961,7 +961,7 @@ DEFAULT_SITE_CONTENT = {
         "hero": {
             "eyebrow": "Nosotros",
             "title": "Respaldo técnico para tu vehículo",
-            "description": "Somos un taller automotriz multimarca orientado a seguridad, continuidad operativa y atención profesional, con una propuesta pensada para responder con rapidez y criterio técnico en cada servicio.",
+            "description": "Somos un taller automotriz especialistas en Hyundai y Kia orientado a seguridad, continuidad operativa y atención profesional, con una propuesta pensada para responder con rapidez y criterio técnico en cada servicio.",
         },
         "intro_title": "Soporte técnico para mantener cada unidad en ruta.",
         "intro_paragraphs": [
