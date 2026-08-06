@@ -794,7 +794,7 @@ DEFAULT_PRODUCT_CATALOG = [{'slug': 'aceite-mobil-super-3000-xe-5w30-4l',
 
 
 DEFAULT_SITE_CONTENT = {
-    "asset_version": "20260727-7",
+    "asset_version": "20260806-10",
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Somos un servicio especialista en Hyundai y Kia.",
@@ -983,6 +983,30 @@ DEFAULT_SITE_CONTENT = {
         "team_image": "/static/img/about/team-hyh.webp",
         "team_alt": "Equipo técnico de Servicio Integral Automotriz HyH Spa",
         "team_caption": "Equipo técnico preparado para atención multimarca y soporte operativo.",
+        "certifications": {
+            "eyebrow": "Certificaciones",
+            "title": "Respaldo y reconocimiento oficial de la marca",
+            "description": "Formación y certificaciones directas de Hyundai que acreditan nuestro nivel técnico.",
+            "prev_aria_label": "Ver certificación anterior",
+            "next_aria_label": "Ver siguiente certificación",
+            "cards": [
+                {
+                    "image": "/static/img/about/certifications/hyundai-world-skill-olympics-2019.webp",
+                    "title": "Medalla · Hyundai World Skill Olympics 2019",
+                    "description": "Distinción \"Superior Skills\" obtenida por una destacada participación en la Olimpiada Mundial de Habilidades Técnicas organizada por Hyundai Motor Company en Seúl, Corea, en 2019.",
+                },
+                {
+                    "image": "/static/img/about/certifications/hyundai-expert-technician.webp",
+                    "title": "Hyundai Certificate · Expert Technician",
+                    "description": "Certificación Hyundai del programa New Technician Recognition Program, categoría Expert Technician.",
+                },
+                {
+                    "image": "/static/img/about/certifications/hyundai-master-advisor.webp",
+                    "title": "Hyundai Service Advisor Program · Master Advisor",
+                    "description": "Certificación internacional Hyundai Service Advisor Program, título Master Advisor, otorgada por la División Internacional de Servicio de Hyundai Motor Company.",
+                },
+            ],
+        },
         "capabilities": {
             "eyebrow": "Capacidades",
             "title": "Servicio orientado a diagnóstico técnico preciso y tiempos de atención confiables.",

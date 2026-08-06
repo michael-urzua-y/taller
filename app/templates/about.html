@@ -25,9 +25,48 @@
           </ul>
         </div>
 
-        <figure class="about-team-card" data-reveal="right" style="--reveal-delay: 0.08s">
-          <img src="{{ content.about_page.team_image }}" alt="{{ content.about_page.team_alt }}" loading="lazy" decoding="async" />
-        </figure>
+        <div class="about-team-column" data-reveal="right" style="--reveal-delay: 0.08s">
+          <figure class="about-team-card">
+            <img src="{{ content.about_page.team_image }}?v={{ content.asset_version }}" alt="{{ content.about_page.team_alt }}" loading="lazy" decoding="async" />
+          </figure>
+
+          <div class="certifications-block">
+            <div class="certifications-heading">
+              <span class="eyebrow">{{ content.about_page.certifications.eyebrow }}</span>
+              <h3>{{ content.about_page.certifications.title }}</h3>
+              <p>{{ content.about_page.certifications.description }}</p>
+            </div>
+
+            <div class="certifications-carousel-shell">
+              <div class="certifications-carousel-track" data-cert-track>
+                {% for item in content.about_page.certifications.cards %}
+                  <figure class="certification-card">
+                    <button
+                      class="certification-button"
+                      type="button"
+                      data-cert-image="{{ item.image }}?v={{ content.asset_version }}"
+                      data-cert-title="{{ item.title }}"
+                      data-cert-description="{{ item.description }}"
+                    >
+                      <img src="{{ item.image }}?v={{ content.asset_version }}" alt="{{ item.title }}" loading="lazy" decoding="async" />
+                      <span class="certification-zoom" aria-hidden="true">+</span>
+                    </button>
+                    <figcaption>{{ item.title }}</figcaption>
+                  </figure>
+                {% endfor %}
+              </div>
+
+              <div class="certifications-carousel-actions">
+                <button class="media-carousel-control" type="button" data-cert-prev aria-label="{{ content.about_page.certifications.prev_aria_label }}">
+                  <span>←</span>
+                </button>
+                <button class="media-carousel-control" type="button" data-cert-next aria-label="{{ content.about_page.certifications.next_aria_label }}">
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -64,4 +103,17 @@
       </div>
     </section>
   </main>
+
+  <dialog class="gallery-modal certification-modal" id="certification-modal">
+    <div class="gallery-modal-inner">
+      <button class="gallery-modal-close" id="certification-modal-close" type="button" aria-label="{{ content.site_copy.gallery_modal_close_aria_label }}">
+        {{ content.site_copy.gallery_modal_close_label }}
+      </button>
+      <img id="certification-modal-image" src="" alt="" />
+      <div class="certification-modal-summary">
+        <strong id="certification-modal-title"></strong>
+        <p id="certification-modal-description"></p>
+      </div>
+    </div>
+  </dialog>
 {% endblock %}

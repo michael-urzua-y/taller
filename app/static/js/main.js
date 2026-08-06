@@ -289,39 +289,35 @@ if (galleryModalClose && galleryModal) {
   });
 }
 
-const mediaTrack = document.querySelector("[data-media-track]");
-const mediaPrev = document.querySelector("[data-media-prev]");
-const mediaNext = document.querySelector("[data-media-next]");
-
-function getMediaScrollAmount() {
-  if (!mediaTrack) {
-    return 0;
-  }
-
-  const firstItem = mediaTrack.querySelector(".media-carousel-item, .media-carousel-item-video");
-  if (!firstItem) {
-    return mediaTrack.clientWidth * 0.9;
-  }
-
-  const styles = window.getComputedStyle(mediaTrack);
-  const gap = Number.parseFloat(styles.columnGap || styles.gap || "0");
-  return firstItem.getBoundingClientRect().width + gap;
-}
-
-function scrollMediaTrack(direction) {
-  if (!mediaTrack) {
+function setupDraggableCarousel(track, prevBtn, nextBtn, itemSelector) {
+  if (!track) {
     return;
   }
 
-  mediaTrack.scrollBy({
-    left: getMediaScrollAmount() * direction,
-    behavior: "smooth",
-  });
-}
+  function getScrollAmount() {
+    const firstItem = track.querySelector(itemSelector);
+    if (!firstItem) {
+      return track.clientWidth * 0.9;
+    }
 
-if (mediaPrev && mediaNext && mediaTrack) {
-  mediaPrev.addEventListener("click", () => scrollMediaTrack(-1));
-  mediaNext.addEventListener("click", () => scrollMediaTrack(1));
+    const styles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap || "0");
+    return firstItem.getBoundingClientRect().width + gap;
+  }
+
+  function scrollTrack(direction) {
+    track.scrollBy({
+      left: getScrollAmount() * direction,
+      behavior: "smooth",
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => scrollTrack(-1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => scrollTrack(1));
+  }
 
   let isPointerDown = false;
   let isDragging = false;
@@ -332,14 +328,14 @@ if (mediaPrev && mediaNext && mediaTrack) {
   function stopDragging() {
     isPointerDown = false;
     activePointerId = null;
-    mediaTrack.classList.remove("is-dragging");
+    track.classList.remove("is-dragging");
 
     window.requestAnimationFrame(() => {
       isDragging = false;
     });
   }
 
-  mediaTrack.addEventListener("pointerdown", (event) => {
+  track.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "mouse" && event.button != 0) {
       return;
     }
@@ -348,12 +344,11 @@ if (mediaPrev && mediaNext && mediaTrack) {
     isDragging = false;
     activePointerId = event.pointerId;
     startX = event.clientX;
-    startScrollLeft = mediaTrack.scrollLeft;
-    mediaTrack.classList.add("is-pointer-down");
-    mediaTrack.setPointerCapture(event.pointerId);
+    startScrollLeft = track.scrollLeft;
+    track.classList.add("is-pointer-down");
   });
 
-  mediaTrack.addEventListener("pointermove", (event) => {
+  track.addEventListener("pointermove", (event) => {
     if (!isPointerDown || event.pointerId !== activePointerId) {
       return;
     }
@@ -361,37 +356,42 @@ if (mediaPrev && mediaNext && mediaTrack) {
     const deltaX = event.clientX - startX;
     if (!isDragging && Math.abs(deltaX) > 6) {
       isDragging = true;
-      mediaTrack.classList.add("is-dragging");
-      mediaTrack.classList.remove("is-pointer-down");
+      track.classList.add("is-dragging");
+      track.classList.remove("is-pointer-down");
+      track.setPointerCapture(activePointerId);
     }
 
     if (!isDragging) {
       return;
     }
 
-    mediaTrack.scrollLeft = startScrollLeft - deltaX;
+    track.scrollLeft = startScrollLeft - deltaX;
   });
 
-  mediaTrack.addEventListener("pointerup", (event) => {
+  track.addEventListener("pointerup", (event) => {
     if (event.pointerId !== activePointerId) {
       return;
     }
 
-    mediaTrack.classList.remove("is-pointer-down");
+    if (track.hasPointerCapture(event.pointerId)) {
+      track.releasePointerCapture(event.pointerId);
+    }
+
+    track.classList.remove("is-pointer-down");
     stopDragging();
   });
 
-  mediaTrack.addEventListener("pointercancel", () => {
-    mediaTrack.classList.remove("is-pointer-down");
+  track.addEventListener("pointercancel", () => {
+    track.classList.remove("is-pointer-down");
     stopDragging();
   });
 
-  mediaTrack.addEventListener("lostpointercapture", () => {
-    mediaTrack.classList.remove("is-pointer-down");
+  track.addEventListener("lostpointercapture", () => {
+    track.classList.remove("is-pointer-down");
     stopDragging();
   });
 
-  mediaTrack.addEventListener(
+  track.addEventListener(
     "click",
     (event) => {
       if (!isDragging) {
@@ -403,4 +403,57 @@ if (mediaPrev && mediaNext && mediaTrack) {
     },
     true,
   );
+}
+
+setupDraggableCarousel(
+  document.querySelector("[data-media-track]"),
+  document.querySelector("[data-media-prev]"),
+  document.querySelector("[data-media-next]"),
+  ".media-carousel-item, .media-carousel-item-video",
+);
+
+setupDraggableCarousel(
+  document.querySelector("[data-cert-track]"),
+  document.querySelector("[data-cert-prev]"),
+  document.querySelector("[data-cert-next]"),
+  ".certification-card",
+);
+
+const certButtons = document.querySelectorAll("[data-cert-image]");
+const certModal = document.querySelector("#certification-modal");
+const certModalClose = document.querySelector("#certification-modal-close");
+const certModalImage = document.querySelector("#certification-modal-image");
+const certModalTitle = document.querySelector("#certification-modal-title");
+const certModalDescription = document.querySelector("#certification-modal-description");
+
+function openCertModal(button) {
+  if (!certModal || !certModalImage || !certModalTitle || !certModalDescription) {
+    return;
+  }
+
+  certModalImage.src = button.dataset.certImage || "";
+  certModalImage.alt = button.dataset.certTitle || "";
+  certModalTitle.textContent = button.dataset.certTitle || "";
+  certModalDescription.textContent = button.dataset.certDescription || "";
+  certModal.showModal();
+}
+
+certButtons.forEach((button) => {
+  button.addEventListener("click", () => openCertModal(button));
+});
+
+if (certModalClose && certModal) {
+  certModalClose.addEventListener("click", () => certModal.close());
+  certModal.addEventListener("click", (event) => {
+    const dialogDimensions = certModal.getBoundingClientRect();
+    const isOutside =
+      event.clientX < dialogDimensions.left ||
+      event.clientX > dialogDimensions.right ||
+      event.clientY < dialogDimensions.top ||
+      event.clientY > dialogDimensions.bottom;
+
+    if (isOutside) {
+      certModal.close();
+    }
+  });
 }
