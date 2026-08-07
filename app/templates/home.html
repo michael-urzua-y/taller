@@ -58,6 +58,45 @@
       </div>
     </section>
 
+    <section class="section home-section home-section-reviews">
+      <div class="container">
+        <div class="section-heading section-heading-compact" data-reveal="up">
+          <span class="eyebrow">{{ content.home_sections.reviews.eyebrow }}</span>
+          <h2>{{ content.home_sections.reviews.title }}</h2>
+          <p>{{ content.home_sections.reviews.description }}</p>
+        </div>
+
+        <div class="reviews-carousel-shell" data-reveal="left" style="--reveal-delay: 0.08s">
+          <div class="reviews-carousel-track" data-review-track>
+            {% for review in content.reviews %}
+              <article class="review-card">
+                <div class="review-card-header">
+                  <span class="review-card-avatar review-card-avatar-{{ loop.index0 % 8 }}" aria-hidden="true">{{ review.author[0] }}</span>
+                  <div class="review-card-identity">
+                    <span class="review-card-author">{{ review.author }}</span>
+                    <span class="review-card-time">{{ review.relative_time }}</span>
+                  </div>
+                </div>
+                <div class="review-card-stars" aria-label="{{ review.rating }} de 5 estrellas">
+                  {% for _ in range(review.rating) %}★{% endfor %}
+                </div>
+                <p class="review-card-text">{{ review.text }}</p>
+              </article>
+            {% endfor %}
+          </div>
+
+          <div class="media-carousel-actions media-carousel-actions-bottom" data-reveal="up" style="--reveal-delay: 0.16s" aria-label="{{ content.home_sections.reviews.controls_aria_label }}">
+            <button class="media-carousel-control" type="button" data-review-prev aria-label="{{ content.home_sections.reviews.prev_aria_label }}">
+              <span>←</span>
+            </button>
+            <button class="media-carousel-control" type="button" data-review-next aria-label="{{ content.home_sections.reviews.next_aria_label }}">
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section home-section home-section-services">
       <div class="container">
         <div class="section-heading section-heading-compact" data-reveal="up">

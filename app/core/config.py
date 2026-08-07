@@ -794,7 +794,7 @@ DEFAULT_PRODUCT_CATALOG = [{'slug': 'aceite-mobil-super-3000-xe-5w30-4l',
 
 
 DEFAULT_SITE_CONTENT = {
-    "asset_version": "20260806-10",
+    "asset_version": "20260807-3",
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Somos un servicio especialista en Hyundai y Kia.",
@@ -851,6 +851,14 @@ DEFAULT_SITE_CONTENT = {
             "controls_aria_label": "Controles de galería",
             "prev_aria_label": "Anterior",
             "next_aria_label": "Siguiente",
+        },
+        "reviews": {
+            "eyebrow": "Reseñas de clientes",
+            "title": "Lo que dicen quienes ya confiaron su vehículo en nosotros.",
+            "description": "Opiniones reales de clientes publicadas en Google Maps.",
+            "controls_aria_label": "Controles de reseñas",
+            "prev_aria_label": "Reseña anterior",
+            "next_aria_label": "Siguiente reseña",
         },
         "map": {
             "eyebrow": "Ubicación y reseñas",
@@ -922,6 +930,68 @@ DEFAULT_SITE_CONTENT = {
             "title": "Presencia local en Independencia",
             "summary": "Consulta la ficha pública del negocio, su ubicación y la información visible para clientes en Google Maps.",
             "cta": "Explorar ficha",
+        },
+    ],
+    "reviews": [
+        {
+            "author": "Johan Rodriguez",
+            "rating": 5,
+            "relative_time": "Hace un mes",
+            "text": "Excelente servicio y atención impecables por parte de todo el equipo, muy amables y profesionales en todo momento. 100% recomendados si necesitas realizarle alguna reparación o mantención a tu Hyundai.",
+        },
+        {
+            "author": "Francisco Salinas",
+            "rating": 5,
+            "relative_time": "Hace 2 meses",
+            "text": "Realmente un excelente servicio, en mi caso la reparación se trataba de la correa de accesorios, algunas poleas y la bomba de agua. El auto ya no emite ningún sonido extraño y funciona perfectamente.",
+        },
+        {
+            "author": "Gustavo Riveros",
+            "rating": 5,
+            "relative_time": "Hace 2 meses",
+            "text": "Excelente la atención muy recomendable el trabajo fue realizado en corto plazo y con mucha dedicación. No dudaré en volver cuando lo necesite.",
+        },
+        {
+            "author": "Ximena Tapia Figueroa",
+            "rating": 5,
+            "relative_time": "Hace 2 meses",
+            "text": "Excelente servicio. Entregan un presupuesto claro y explican todo detalladamente en caso de requerir algún ítem adicional. Realizan un trabajo profesional. Totalmente recomendado.",
+        },
+        {
+            "author": "Oty Muñoz",
+            "rating": 5,
+            "relative_time": "Hace 4 meses",
+            "text": "¡Un 10 de 10 para Servicio Automotriz H&H! Llevé mi auto para revisión más mantención y la experiencia fue excepcional. Me mantuvieron informada en todo momento sobre el estado del vehículo.",
+        },
+        {
+            "author": "Cristian Alfaro",
+            "rating": 5,
+            "relative_time": "Hace 6 meses",
+            "text": "Después de pasar de taller en taller sin saber los mecánicos cuál era el problema que tenía mi auto, nadie me dio una solución. Luego de investigar llegué a Servicio Automotriz H&H y desde el primer momento quedé conforme.",
+        },
+        {
+            "author": "Ignacio Hirschegger",
+            "rating": 5,
+            "relative_time": "Hace 7 meses",
+            "text": "Muy satisfecho con la reparación de mi vehículo. Viajé desde Argentina exclusivamente para repararlo y superaron mis expectativas. Recomendado 100%.",
+        },
+        {
+            "author": "Constanza Javiera Huechuqueo",
+            "rating": 5,
+            "relative_time": "Hace 8 meses",
+            "text": "Llevo muchos años llevando mi vehículo a sus mantenciones y revisiones, y puedo decir con total confianza que son los únicos que han logrado mantenerlo en excelente estado. La atención es excepcional.",
+        },
+        {
+            "author": "Alberto Stern",
+            "rating": 5,
+            "relative_time": "Hace 8 meses",
+            "text": "Excelente taller, conocen cada detalle del vehículo, son especialistas en la marca, se dan el tiempo para explicar y conversar. El trabajo suele realizarse durante el mismo día y te mantienen informado de los avances.",
+        },
+        {
+            "author": "Germán Cañizare",
+            "rating": 5,
+            "relative_time": "Hace un año",
+            "text": "De las experiencias más recomendables en un taller mecánico. A pesar de viajar desde Argentina con ciertos temores, me di cuenta apenas les dejé el vehículo que son profesionales. Cumplieron con los tiempos y con lo pactado en el precio.",
         },
     ],
     "video": {

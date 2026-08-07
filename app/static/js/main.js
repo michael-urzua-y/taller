@@ -419,6 +419,13 @@ setupDraggableCarousel(
   ".certification-card",
 );
 
+setupDraggableCarousel(
+  document.querySelector("[data-review-track]"),
+  document.querySelector("[data-review-prev]"),
+  document.querySelector("[data-review-next]"),
+  ".review-card",
+);
+
 const certButtons = document.querySelectorAll("[data-cert-image]");
 const certModal = document.querySelector("#certification-modal");
 const certModalClose = document.querySelector("#certification-modal-close");
