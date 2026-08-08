@@ -794,7 +794,7 @@ DEFAULT_PRODUCT_CATALOG = [{'slug': 'aceite-mobil-super-3000-xe-5w30-4l',
 
 
 DEFAULT_SITE_CONTENT = {
-    "asset_version": "20260807-3",
+    "asset_version": "20260807-4",
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Somos un servicio especialista en Hyundai y Kia.",
@@ -856,6 +856,8 @@ DEFAULT_SITE_CONTENT = {
             "eyebrow": "Reseñas de clientes",
             "title": "Lo que dicen quienes ya confiaron su vehículo en nosotros.",
             "description": "Opiniones reales de clientes publicadas en Google Maps.",
+            "rating_headline": "Calificación 5.0 en Google Maps",
+            "rating_subtext": "Respaldada por nuestros clientes",
             "controls_aria_label": "Controles de reseñas",
             "prev_aria_label": "Reseña anterior",
             "next_aria_label": "Siguiente reseña",

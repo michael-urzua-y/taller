@@ -66,6 +66,15 @@
           <p>{{ content.home_sections.reviews.description }}</p>
         </div>
 
+        <div class="reviews-rating-badge" data-reveal="up" style="--reveal-delay: 0.05s">
+          <span class="reviews-rating-badge-score">{{ content.google_place.rating }}</span>
+          <div class="reviews-rating-badge-copy">
+            <span class="reviews-rating-badge-stars" aria-hidden="true">★★★★★</span>
+            <strong>{{ content.home_sections.reviews.rating_headline }}</strong>
+            <span>{{ content.home_sections.reviews.rating_subtext }}</span>
+          </div>
+        </div>
+
         <div class="reviews-carousel-shell" data-reveal="left" style="--reveal-delay: 0.08s">
           <div class="reviews-carousel-track" data-review-track>
             {% for review in content.reviews %}
