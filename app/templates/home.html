@@ -233,6 +233,11 @@
             <span>{{ content.home_sections.map.summary_rating_label }} {{ content.google_place.rating }}</span>
             <span>{{ content.google_place.address }}</span>
             <span>{{ content.google_place.phone }}</span>
+            <span class="map-hours">
+              {% for line in content.contact.business_hours.split(" | ") %}
+                <span class="map-hours-line">{{ line }}</span>
+              {% endfor %}
+            </span>
             <div class="map-actions">
               <a
                 class="button button-primary"
@@ -259,14 +264,6 @@
             <div class="map-embed-info">
               <strong>{{ content.google_place.name }}</strong>
               <span>{{ content.google_place.address }}</span>
-              <a
-                class="button button-primary"
-                href="{{ content.google_place.maps_url }}"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {{ content.home_sections.map.primary_cta }}
-              </a>
             </div>
           </div>
         </div>

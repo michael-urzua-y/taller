@@ -1835,6 +1835,16 @@ button {
   line-height: 1.6;
 }
 
+.map-hours {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.map-hours-line {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+}
+
 .map-actions {
   display: flex;
   align-items: center;

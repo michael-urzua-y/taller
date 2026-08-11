@@ -794,7 +794,7 @@ DEFAULT_PRODUCT_CATALOG = [{'slug': 'aceite-mobil-super-3000-xe-5w30-4l',
 
 
 DEFAULT_SITE_CONTENT = {
-    "asset_version": "20260807-4",
+    "asset_version": "20260808-2",
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Somos un servicio especialista en Hyundai y Kia.",
@@ -1195,7 +1195,7 @@ class BaseConfig:
     CONTACT_PHONE = _get_env("CONTACT_PHONE", "56 9 6847 3825")
     WHATSAPP_NUMBER = _get_env("WHATSAPP_NUMBER", "+56968473825")
     ADDRESS = _get_env("ADDRESS", "Av. Principal 1234, Santiago")
-    BUSINESS_HOURS = _get_env("BUSINESS_HOURS", "Lun-Vie 08:30-18:30 | Sáb 09:00-14:00")
+    BUSINESS_HOURS = _get_env("BUSINESS_HOURS", "Lun-Jue 08:30-13:00 y 14:00-18:00 | Vie 08:30-13:00 y 14:00-16:00")
     HOST = _get_env("HOST", "127.0.0.1")
     PORT = _get_int_env("PORT", 5000)
     GOOGLE_PLACES_API_KEY = _get_env("GOOGLE_PLACES_API_KEY")
