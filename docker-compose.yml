@@ -4,6 +4,19 @@ services:
     container_name: hyh-web
     env_file:
       - .env
+    expose:
+      - "5000"
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: hyh-nginx
+    depends_on:
+      - web
     ports:
-      - "5000:5000"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/nginx/ssl:/etc/nginx/ssl:ro
     restart: unless-stopped
