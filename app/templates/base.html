@@ -8,6 +8,21 @@
       name="description"
       content="{{ meta.description }}"
     />
+    <link rel="canonical" href="{{ meta.canonical_url }}" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ content.site_name }}" />
+    <meta property="og:title" content="{{ meta.title }}" />
+    <meta property="og:description" content="{{ meta.description }}" />
+    <meta property="og:url" content="{{ meta.canonical_url }}" />
+    <meta property="og:image" content="{{ meta.og_image }}" />
+    <meta property="og:locale" content="es_CL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ meta.title }}" />
+    <meta name="twitter:description" content="{{ meta.description }}" />
+    <meta name="twitter:image" content="{{ meta.og_image }}" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,6 +32,7 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
     {% if meta.page_key == "home" %}<link rel="preload" as="image" href="{{ content.hero.intro_logo }}" fetchpriority="high" />{% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v={{ content.asset_version }}" />
+    {% block structured_data %}{% endblock %}
   </head>
   <body data-page-key="{{ meta.page_key }}">
     <div class="site-wrapper">

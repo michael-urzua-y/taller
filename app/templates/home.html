@@ -1,6 +1,48 @@
 {% extends "base.html" %}
 {% from "partials/cards.html" import service_overview_cards, part_cards %}
 
+{% block structured_data %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": {{ content.google_place.name | tojson }},
+      "image": {{ meta.og_image | tojson }},
+      "url": {{ meta.site_url | tojson }},
+      "telephone": {{ content.contact.phone | tojson }},
+      "email": {{ content.contact.email | tojson }},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": {{ content.contact.address | tojson }},
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "CL"
+      },
+      "openingHours": {{ content.contact.business_hours | tojson }},
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ content.google_place.rating | tojson }},
+        "bestRating": "5",
+        "reviewCount": {{ content.reviews | length | tojson }}
+      },
+      "review": [
+        {% for review in content.reviews %}
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": {{ review.author | tojson }} },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": {{ review.rating | tojson }},
+            "bestRating": "5"
+          },
+          "reviewBody": {{ review.text | tojson }}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "sameAs": [{{ content.google_place.maps_url | tojson }}]
+    }
+  </script>
+{% endblock %}
+
 {% block body %}
   <div class="home-intro" id="home-intro" aria-hidden="true">
     <div class="home-intro-inner">

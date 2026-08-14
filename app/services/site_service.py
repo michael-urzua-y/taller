@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from copy import deepcopy
 
-from flask import current_app
+from flask import current_app, request
 
 from app.domain.site_content import build_site_content
 from app.services.google_reviews_service import get_google_reviews
@@ -39,6 +39,10 @@ def build_site_context(page_key: str, *, title: str, description: str) -> dict:
     content["google_review_cards"] = google_reviews
     content["google_reviews_live"] = google_reviews_live
 
+    site_url = current_app.config["SITE_URL"].rstrip("/")
+    canonical_url = f"{site_url}{request.path}"
+    og_image = f"{site_url}/static/img/hero.webp?v={content['asset_version']}"
+
     return {
         "content": content,
         "site_name": current_app.config["SITE_NAME"],
@@ -46,6 +50,9 @@ def build_site_context(page_key: str, *, title: str, description: str) -> dict:
             "title": title,
             "description": description,
             "page_key": page_key,
+            "canonical_url": canonical_url,
+            "og_image": og_image,
+            "site_url": site_url,
         },
         "navigation": build_navigation(),
     }

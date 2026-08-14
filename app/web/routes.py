@@ -1,8 +1,14 @@
 from __future__ import annotations
 
-from flask import Blueprint, abort, render_template
+from flask import Blueprint, Response, abort, current_app, render_template, url_for
 
-from app.domain.site_content import get_product_by_slug, get_related_products, get_service_by_slug
+from app.domain.site_content import (
+    get_product_by_slug,
+    get_products_data,
+    get_related_products,
+    get_service_by_slug,
+    get_services_data,
+)
 from app.services.site_service import build_site_context, resolve_page_meta
 
 site = Blueprint("site", __name__)
@@ -89,3 +95,38 @@ def about():
         "about.html",
         **build_site_context("about", **meta),
     )
+
+
+@site.get("/sitemap.xml")
+def sitemap():
+    site_url = current_app.config["SITE_URL"].rstrip("/")
+    static_paths = [
+        url_for("site.home"),
+        url_for("site.services"),
+        url_for("site.parts"),
+        url_for("site.about"),
+    ]
+    service_paths = [url_for("site.service_detail", slug=s["slug"]) for s in get_services_data()]
+    product_paths = [url_for("site.product_detail", slug=p["slug"]) for p in get_products_data()]
+
+    urls = [f"{site_url}{path}" for path in static_paths + service_paths + product_paths]
+
+    xml_urls = "\n".join(f"  <url><loc>{url}</loc></url>" for url in urls)
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{xml_urls}\n"
+        "</urlset>"
+    )
+    return Response(xml, mimetype="application/xml")
+
+
+@site.get("/robots.txt")
+def robots():
+    site_url = current_app.config["SITE_URL"].rstrip("/")
+    content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        f"Sitemap: {site_url}/sitemap.xml\n"
+    )
+    return Response(content, mimetype="text/plain")

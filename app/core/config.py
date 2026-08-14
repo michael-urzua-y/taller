@@ -794,7 +794,7 @@ DEFAULT_PRODUCT_CATALOG = [{'slug': 'aceite-mobil-super-3000-xe-5w30-4l',
 
 
 DEFAULT_SITE_CONTENT = {
-    "asset_version": "20260808-2",
+    "asset_version": "20260814-1",
     "hero": {
         "eyebrow": "Diagnóstico, mantención y repuestos",
         "title": "Somos un servicio especialista en Hyundai y Kia.",
@@ -1191,6 +1191,7 @@ class BaseConfig:
     SESSION_COOKIE_SECURE = _get_bool_env("SESSION_COOKIE_SECURE", ENV_NAME == "production")
     PREFERRED_URL_SCHEME = _get_env("PREFERRED_URL_SCHEME", "https")
     SITE_NAME = _get_env("SITE_NAME", "HyH Spa")
+    SITE_URL = _get_env("SITE_URL", "https://serviciohyh.cl")
     CONTACT_EMAIL = _get_env("CONTACT_EMAIL", "contacto@hyh-automotriz.cl")
     CONTACT_PHONE = _get_env("CONTACT_PHONE", "56 9 6847 3825")
     WHATSAPP_NUMBER = _get_env("WHATSAPP_NUMBER", "+56968473825")
